@@ -9,7 +9,7 @@
 <template>
   <div class="navbar-wrapper">
     <div class="title">
-      <h1>Chance</h1>
+      <h1>ChanceDAO</h1>
       <div class="dice">
         <i class="fa-2x fa-solid fa-dice"></i>
       </div>

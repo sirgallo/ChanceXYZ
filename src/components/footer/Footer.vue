@@ -3,7 +3,7 @@
 
 <template>
   <div class="footer-container">
-    <h4>A No Loss Lottery</h4>
+    <h4>A no loss lottery running on the <b>SOLANA</b> blockchain.</h4>
   </div>
 </template>
 
