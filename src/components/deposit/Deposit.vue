@@ -1,7 +1,7 @@
 <script setup lang="ts">
   interface DepositProps {
-    title: string
-    titleIcon: 'Alt' | 'Stable'
+    title: string;
+    titleIcon: 'Alt' | 'Stable';
   }
 
   const props = defineProps<DepositProps>();

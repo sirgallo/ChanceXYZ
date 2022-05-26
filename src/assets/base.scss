@@ -1,8 +1,7 @@
-/* color palette from <https://github.com/vuejs/theme> */
 :root {
   --c-white: #ffffff;
-  --c-white-soft: #f8f8f8;
-  --c-white-mute: #f2f2f2;
+  --c-white-soft: #fff5f5;
+  --c-light-gray-mute: #e0e0e0;
 
   --c-black: #181818;
   --c-black-soft: #222222;
@@ -24,14 +23,14 @@
   --c-text-dark-1: var(--c-white);
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  --c-boxshadow: lightgray;
+  --c-boxshadow: rgb(223, 223, 223);
 
   --c-brand-title-light: rgb(94, 128, 202);
   --c-brand-title-dark: rgb(174, 194, 238);
 
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
-  --color-background-mute: var(--c-white-mute);
+  --color-background-mute: var(--c-light-gray-mute);
 
   --color-border: var(--c-divider-light-2);
   --color-border-hover: var(--c-divider-light-1);

@@ -6,11 +6,11 @@
 
 <template>
   <div class="stage">
-    <Navbar />
+    <Navbar></Navbar>
     <div class="view">
-      <RouterView />
+      <RouterView></RouterView>
     </div>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
 
