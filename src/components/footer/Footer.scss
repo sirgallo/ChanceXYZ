@@ -2,18 +2,35 @@
   width: 100%;
   position: absolute;
   bottom: 0px;
-  padding: 0.5rem;
-  background-color: var(--color-background);
+  background-color: var(--color-background-soft);
   box-shadow: 0px -1px 6px 1px var(--c-boxshadow-dark);
-  border-radius: 0.5rem 0.5rem 0rem 0rem;
+  border-radius: 0 0.5rem 0rem 0rem;
+  display: flex;
+  flex-direction: row;
 
-  h4 {
-    font-weight: lighter;
-    color: var(--color-heading);
+  .footer-layer-top {
+    flex: none;
+    width: 25%;
+    z-index: 1;
+    background-color: var(--color-background);
+    border-right: 2px solid var(--color-background-mute);
+    border-radius: 0 0.5rem 0.5rem 0;
+    align-items: left;
+    padding: 0.5rem;
+
+    h4 {
+      font-weight: lighter;
+      color: var(--color-heading);
+    }
+  
+    b {
+      font-weight: bold;
+      color: var(--color-brand-title);
+    }
   }
 
-  b {
-    font-weight: bold;
-    color: var(--color-brand-title);
+  .footer-layer-base {
+    flex: none;
+    z-index: 0;
   }
 }
