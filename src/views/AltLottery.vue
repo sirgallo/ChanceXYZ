@@ -4,7 +4,10 @@
 
 <template>
   <div class="view-container">
-    <Deposit title="Alt Coin Lottery" />
+    <Deposit 
+      title="Alt Coin Lottery"
+      titleIcon="Alt">
+    </Deposit>
   </div>
 </template>
 

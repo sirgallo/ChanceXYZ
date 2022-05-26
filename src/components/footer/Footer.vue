@@ -3,7 +3,7 @@
 
 <template>
   <div class="footer-container">
-    <h3>A No Loss Lottery</h3>
+    <h4>A No Loss Lottery</h4>
   </div>
 </template>
 

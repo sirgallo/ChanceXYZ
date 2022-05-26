@@ -4,7 +4,10 @@
 
 <template>
   <div class="view-container">
-    <Deposit title="Stable Lottery" />
+    <Deposit 
+      title="Stable Lottery"
+      titleIcon="Stable">
+    </Deposit>
   </div>
 </template>
 

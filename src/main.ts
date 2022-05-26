@@ -12,19 +12,22 @@ import App from './App.vue';
 import router from './router';
 
 import 'solana-wallets-vue/styles.css';
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+//import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+
+import FontAwesomeIcon from '@app/FontAwesomeLoader';
 
 /*
-import { FontAwesomeLoader } from '@app/FontAwesomeLoader';
-
 new FontAwesomeLoader()
   .load();
-*/
+
+
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
 library.add(fas);
 dom.watch()
+*/
 
 const app = createApp(App);
 

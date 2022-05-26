@@ -21,10 +21,10 @@
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
 
   --c-boxshadow: lightgray;
-}
 
-/* semantic color variables for this project */
-:root {
+  --c-brand-title-light: darkblue;
+  --c-brand-title-dark: lightblue;
+
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
   --color-background-mute: var(--c-white-mute);
@@ -35,9 +35,10 @@
   --color-heading: var(--c-text-light-1);
   --color-text: var(--c-text-light-1);
 
+  --color-brand-title: var(--c-brand-title-light);
+
   --section-gap: 160px;
 }
-
 
 :root.dark {
   --color-background: gray;
@@ -49,6 +50,8 @@
 
   --color-heading: var(--c-text-dark-1);
   --color-text: var(--c-text-dark-2);
+
+  --color-brand-title: var(--c-brand-title-dark);
 }
 
 
