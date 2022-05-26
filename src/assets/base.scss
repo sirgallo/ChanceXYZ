@@ -8,11 +8,15 @@
   --c-black-soft: #222222;
   --c-black-mute: #282828;
 
+  --c-dark-gray: rgb(150, 150, 150);
+  --c-gray-dark-darker-1: rgb(122, 122, 122);
+  --c-gray-dark-lighter-1: rgb(182, 182, 182);
+
   --c-indigo: #2c3e50;
 
   --c-divider-light-1: rgba(60, 60, 60, 0.29);
   --c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --c-divider-dark-1: rgba(138, 79, 79, 0.65);
   --c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
   --c-text-light-1: var(--c-indigo);
@@ -22,8 +26,8 @@
 
   --c-boxshadow: lightgray;
 
-  --c-brand-title-light: darkblue;
-  --c-brand-title-dark: lightblue;
+  --c-brand-title-light: rgb(94, 128, 202);
+  --c-brand-title-dark: rgb(174, 194, 238);
 
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
@@ -41,9 +45,9 @@
 }
 
 :root.dark {
-  --color-background: gray;
-  --color-background-soft: darkgray;
-  --color-background-mute: lightgray;
+  --color-background: var(--c-gray-dark-darker-1);
+  --color-background-soft: var(--c-dark-gray);
+  --color-background-mute: var(--c-gray-dark-lighter-1);
 
   --color-border: var(--c-divider-dark-2);
   --color-border-hover: var(--c-divider-dark-1);

@@ -1,13 +1,14 @@
 .navbar-wrapper {
   width: 100%;
   display: flex;
-  background-color: var(--color-background);
+  background-color: var(--color-background-soft);
   box-shadow: 0px 1px 6px 3px var(--c-boxshadow);
   margin-bottom: 2rem;
   flex-direction: row;
 
   .title {
-    flex: 20%;
+    flex: 10%;
+    z-index: 0;
     margin-left: 1rem;
     display: flex;
     flex-direction: row;
@@ -25,16 +26,21 @@
   }
   
   .router {
-    flex: 45%;
+    z-index: 1;
+    background-color: var(--color-background);
+    border-right: 2px solid var(--color-background-mute);
+    border-left: 2px solid var(--color-background-mute);
+    border-radius: 0.5rem;
+    flex: 55%;
     align-items: center;
   }
 
   .user-actions {
-    flex: 0%;
-    align-items: flex-end;
+    z-index: 0;
+    flex: 20%;
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    justify-content: end;
     align-items: flex-end;
 
     .dark-mode-toggle {
@@ -51,22 +57,23 @@
 
 .router-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   
   .router-link {
     flex-direction: column;
     padding: 0.75rem;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--color-brand-title);
     font-weight: bold;
     font-size: 16px;
     
     &:hover {
       background-color: var(--color-background-soft);
-      border-radius: 0.5rem;
       border: 0px solid transparent;
-      color: lightblue;
+      border-radius: 0.5rem;
     }
 
     &:active {

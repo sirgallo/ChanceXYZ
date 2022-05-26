@@ -16,18 +16,10 @@
     </div>
     <div class="router">
       <nav class="router-wrapper">
-        <div class="router-link">
-          <RouterLink class="router-link" to="/">Home</RouterLink>
-        </div>
-        <div class="router-link">
-          <RouterLink class="router-link" to="/stable">Stable</RouterLink>
-        </div>
-        <div class="router-link">
-          <RouterLink class="router-link" to="/alt">Alt</RouterLink>
-        </div>
-        <div class="router-link">
-          <RouterLink class="router-link" to="/analysis">Analysis</RouterLink>
-        </div>
+        <RouterLink class="router-link" to="/">Home</RouterLink>
+        <RouterLink class="router-link" to="/stable">Stable</RouterLink>
+        <RouterLink class="router-link" to="/alt">Alt</RouterLink>
+        <RouterLink class="router-link" to="/analysis">Analysis</RouterLink>
       </nav>
     </div>
     <div class="user-actions">
