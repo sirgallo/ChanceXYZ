@@ -12,8 +12,8 @@
     <div class="deposit-title">
       <h2>{{ title }}</h2>
       <div class="deposit-title-icon">
-        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave"></i>
-        <i v-else class="fa-lg fa-brands fa-bitcoin"></i>
+        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color"></i>
+        <i v-else class="fa-lg fa-brands fa-bitcoin bitcoin-color"></i>
       </div>
     </div>
   </div>

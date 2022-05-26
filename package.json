@@ -20,6 +20,8 @@
     "@vueuse/components": "^8.5.0",
     "@vueuse/core": "^8.5.0",
     "pinia": "^2.0.13",
+    "primeicons": "^5.0.0",
+    "primevue": "^3.12.6",
     "solana-wallets-vue": "^0.3.2",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"

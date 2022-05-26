@@ -12,22 +12,11 @@ import App from './App.vue';
 import router from './router';
 
 import 'solana-wallets-vue/styles.css';
-//import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
 
 import FontAwesomeIcon from '@app/FontAwesomeLoader';
 
-/*
-new FontAwesomeLoader()
-  .load();
-
-
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-
-library.add(fas);
-dom.watch()
-*/
+import PrimeVue from 'primevue/config';
+import Tooltip from 'primevue/tooltip';
 
 const app = createApp(App);
 
@@ -42,7 +31,10 @@ const walletOpts = {
 
 app.use(createPinia());
 app.use(router);
+app.use(PrimeVue);
 app.use(SolanaWallets, walletOpts);
+
+app.directive('tooltip', Tooltip);
 
 app.component("font-awesome-icon", FontAwesomeIcon)
 

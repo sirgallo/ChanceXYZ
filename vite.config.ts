@@ -11,7 +11,6 @@ export default defineConfig({
     alias: {
       '@app': fileURLToPath(new URL('./src', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
-      '@models': fileURLToPath(new URL('./src/models', import.meta.url)),
       '@views': fileURLToPath(new URL('./src/views', import.meta.url))
     }
   }
