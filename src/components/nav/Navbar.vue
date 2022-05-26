@@ -36,7 +36,12 @@
     </div>
     <div class="user-actions">
       <div class="dark-mode-toggle" @click="toggleDark()">
-        <i class="fa-solid fa-toggle-on" v-tooltip="'color mode'"></i>
+        <div v-if="isDark">
+          <i class="fa-solid fa-toggle-on"></i>
+        </div>
+        <div v-else>
+          <i class="fa-solid fa-toggle-off"></i>
+        </div>
       </div>
       <Wallet />
     </div>
