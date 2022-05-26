@@ -1,0 +1,41 @@
+<script setup lang="ts">
+  import { useDark, useToggle } from '@vueuse/core';
+  import Wallet from '@app/components/wallet/Wallet.vue';
+  
+  const isDark = useDark()
+  const toggleDark = useToggle(isDark)
+</script>
+
+<template>
+  <div class="navbar-wrapper">
+    <div class="title">
+      <h1>Chance</h1>
+    </div>
+    <div class="router">
+      <nav class="router-wrapper">
+        <div class="router-link">
+          <RouterLink class="router-link" to="/">Home</RouterLink>
+        </div>
+        <div class="router-link">
+          <RouterLink class="router-link" to="/stable">Stable</RouterLink>
+        </div>
+        <div class="router-link">
+          <RouterLink class="router-link" to="/alt">Alt</RouterLink>
+        </div>
+        <div class="router-link">
+          <RouterLink class="router-link" to="/analysis">Analysis</RouterLink>
+        </div>
+      </nav>
+    </div>
+    <div class="user-actions">
+      <div class="dark-mode-toggle" @click="toggleDark()">
+        <i class="fa-solid fa-toggle-on"></i>
+      </div>
+      <Wallet />
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+  @import '@app/components/nav/Navbar.scss';
+</style>

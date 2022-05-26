@@ -1,0 +1,28 @@
+#app {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: var(--color-background-soft);
+  position: relative;
+  overflow: hidden;
+
+  font-weight: normal;
+  font-size: 14px;
+
+  .stage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .view {
+      height: 95%;
+    }
+  }
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}

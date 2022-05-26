@@ -1,0 +1,13 @@
+.footer-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  padding: 0.5rem;
+  background-color: var(--color-background);
+  box-shadow: 0px 2px 6px 1px var(--c-boxshadow);
+
+  h4 {
+    font-weight: bolder;
+    color: var(--color-heading);
+  }
+}
