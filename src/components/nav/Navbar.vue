@@ -16,10 +16,22 @@
     </div>
     <div class="router">
       <nav class="router-wrapper">
-        <RouterLink class="router-link" to="/">Home</RouterLink>
-        <RouterLink class="router-link" to="/stable">Stable</RouterLink>
-        <RouterLink class="router-link" to="/alt">Alt</RouterLink>
-        <RouterLink class="router-link" to="/analysis">Analysis</RouterLink>
+        <div class="router-link-wrap">
+          <i class="fa-lg fa-solid fa-house"></i>
+          <RouterLink class="router-link" to="/">Home</RouterLink>
+        </div>
+        <div class="router-link-wrap">
+          <i class="fa-lg fa-solid fa-money-bill-wave"></i>
+          <RouterLink class="router-link" to="/stable">Stable</RouterLink>
+        </div>
+        <div class="router-link-wrap">
+          <i class="fa-lg fa-brands fa-bitcoin"></i>
+          <RouterLink class="router-link" to="/alt">Alt</RouterLink>
+        </div>
+        <div class="router-link-wrap">
+          <i class="fa-lg fa-solid fa-chart-bar"></i>
+          <RouterLink class="router-link" to="/analysis">Analysis</RouterLink>
+        </div>
       </nav>
     </div>
     <div class="user-actions">

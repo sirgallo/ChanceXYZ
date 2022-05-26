@@ -36,6 +36,6 @@ app.use(SolanaWallets, walletOpts);
 
 app.directive('tooltip', Tooltip);
 
-app.component("font-awesome-icon", FontAwesomeIcon);
+app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.mount('#app');

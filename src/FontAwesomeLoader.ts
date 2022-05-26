@@ -4,7 +4,10 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { 
   faToggleOn, 
   faDice,
-  faMoneyBillWave
+  faMoneyBillWave,
+  faHouse,
+  faChartBar,
+  faToggleOff
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -17,7 +20,10 @@ class FontAwesomeLoader {
       faToggleOn,
       faDice,
       faMoneyBillWave,
-      faBitcoin
+      faBitcoin,
+      faHouse,
+      faChartBar,
+      faToggleOff
     ];
 
     library.add(...iconList);

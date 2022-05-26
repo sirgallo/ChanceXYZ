@@ -5,6 +5,7 @@
   box-shadow: 0px 1px 6px 3px var(--c-boxshadow);
   margin-bottom: 2rem;
   flex-direction: row;
+  border-radius:  0rem 0rem 0.5rem 0.5rem;
 
   .title {
     flex: 10%;
@@ -31,7 +32,7 @@
     border-right: 2px solid var(--color-background-mute);
     border-left: 2px solid var(--color-background-mute);
     border-radius: 0.5rem;
-    flex: 55%;
+    flex: 25%;
     align-items: center;
   }
 
@@ -60,7 +61,7 @@
   justify-content: center;
   align-items: center;
   
-  .router-link {
+  .router-link-wrap {
     flex-direction: column;
     padding: 0.75rem;
     margin-right: 0.75rem;
@@ -69,12 +70,26 @@
     color: var(--color-brand-title);
     font-weight: bold;
     font-size: 16px;
+    border-right: 2px solid var(--color-background-soft);
+    border-left: 2px solid var(--color-background-soft);
+    border-radius: 0.5rem;
     
     &:hover {
       background-color: var(--color-background-soft);
-      border: 0px solid transparent;
-      border-radius: 0.5rem;
+      padding: 0.75rem 1rem 0.75rem 1rem;
     }
+
+    &:active {
+      color: darkblue; 
+    }
+  }
+
+  .router-link {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--color-brand-title);
+    font-weight: bold;
+    font-size: 16px;
 
     &:active {
       color: darkblue;
