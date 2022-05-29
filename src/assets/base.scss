@@ -9,7 +9,7 @@
 
   --c-dark-gray: rgb(150, 150, 150);
   --c-gray-dark-darker-1: rgb(122, 122, 122);
-  --c-gray-dark-lighter-1: rgb(182, 182, 182);
+  --c-gray-dark-lighter-1: rgb(196, 194, 194);
 
   --c-indigo: #2c3e50;
 
@@ -26,8 +26,8 @@
   --c-boxshadow: rgb(228, 241, 255);
   --c-boxshadow-dark: rgb(135, 160, 231);
 
-  --c-brand-title-light: rgb(94, 128, 202);
-  --c-brand-title-dark: rgb(174, 194, 238);
+  --c-brand-title-light: rgb(98, 128, 192);
+  --c-brand-title-dark: rgb(157, 211, 236);
 
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
@@ -80,4 +80,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
 }

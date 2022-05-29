@@ -1,10 +1,19 @@
 <script setup lang="ts">
+  import { useWallet } from 'solana-wallets-vue';
+  import { storeToRefs } from 'pinia';
+  import { useBalanceStore } from '@stores/balance';
+
   interface DepositProps {
     title: string;
     titleIcon: 'Alt' | 'Stable';
   }
 
+  const { publicKey, connected } = useWallet();
+
   const props = defineProps<DepositProps>();
+  const store = useBalanceStore();
+
+  const { balance } = storeToRefs(store);
 </script>
 
 <template>
@@ -16,6 +25,10 @@
         <i v-else class="fa-lg fa-brands fa-bitcoin bitcoin-color"></i>
       </div>
     </div>
+    <!--
+    <button @click="requestAirdrop()">request airdrop</button>
+    <p>Current Wallet Balance: {{ store.balance }}</p>
+    -->
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { useDark, useToggle } from '@vueuse/core';
+
   import Wallet from '@app/components/wallet/Wallet.vue';
   
   const isDark = useDark();
@@ -22,15 +23,11 @@
         </div>
         <div class="router-link-wrap">
           <i class="fa-lg fa-solid fa-money-bill-wave"></i>
-          <RouterLink class="router-link" to="/stable">Stable</RouterLink>
-        </div>
-        <div class="router-link-wrap">
-          <i class="fa-lg fa-brands fa-bitcoin"></i>
-          <RouterLink class="router-link" to="/alt">Alt</RouterLink>
+          <RouterLink class="router-link" to="/stable">Lottery</RouterLink>
         </div>
         <div class="router-link-wrap">
           <i class="fa-lg fa-solid fa-chart-bar"></i>
-          <RouterLink class="router-link" to="/analysis">Analysis</RouterLink>
+          <RouterLink class="router-link" to="/analysis">Analytics</RouterLink>
         </div>
       </nav>
     </div>
@@ -38,12 +35,14 @@
       <div class="dark-mode-toggle" @click="toggleDark()">
         <div v-if="isDark">
           <i class="fa-solid fa-toggle-on"></i>
+          dark
         </div>
         <div v-else>
           <i class="fa-solid fa-toggle-off"></i>
+          light
         </div>
       </div>
-      <Wallet />
+      <Wallet></Wallet>
     </div>
   </div>
 </template>

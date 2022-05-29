@@ -8,6 +8,7 @@
     "paths": {
       "@app/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
+      "@stores/*": ["./src/stores/*"],
       "@views/*": ["./src/views/*"]
     }
   }

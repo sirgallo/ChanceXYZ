@@ -5,7 +5,6 @@ import {
 
 import HomeView from '@views/HomeView.vue';
 import StableLottery from '@views/StableLottery.vue';
-import AltLottery from '@views/AltLottery.vue';
 import AllocationAnalysis from '@views/AllocationAnalysis.vue';
 
 const router = createRouter({
@@ -20,11 +19,6 @@ const router = createRouter({
       path: '/stable',
       name: 'Stable',
       component: StableLottery
-    },
-    {
-      path: '/alt',
-      name: 'Alt',
-      component: AltLottery
     },
     {
       path: '/analysis',
