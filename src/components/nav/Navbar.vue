@@ -10,7 +10,6 @@
 <template>
   <div class="navbar-wrapper">
     <div class="title">
-      <h1>ChanceDAO</h1>
       <div class="dice">
         <i class="fa-2x fa-solid fa-dice"></i>
       </div>
@@ -18,15 +17,12 @@
     <div class="router">
       <nav class="router-wrapper">
         <div class="router-link-wrap">
-          <i class="fa-lg fa-solid fa-house"></i>
           <RouterLink class="router-link" to="/">Home</RouterLink>
         </div>
         <div class="router-link-wrap">
-          <i class="fa-lg fa-solid fa-money-bill-wave"></i>
           <RouterLink class="router-link" to="/stable">Lottery</RouterLink>
         </div>
         <div class="router-link-wrap">
-          <i class="fa-lg fa-solid fa-chart-bar"></i>
           <RouterLink class="router-link" to="/analysis">Analytics</RouterLink>
         </div>
       </nav>
@@ -35,11 +31,9 @@
       <div class="dark-mode-toggle" @click="toggleDark()">
         <div v-if="isDark">
           <i class="fa-solid fa-toggle-on"></i>
-          dark
         </div>
         <div v-else>
           <i class="fa-solid fa-toggle-off"></i>
-          light
         </div>
       </div>
       <Wallet></Wallet>

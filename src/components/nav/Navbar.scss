@@ -1,16 +1,15 @@
 .navbar-wrapper {
   width: 100%;
   display: flex;
-  background-color: var(--color-background-soft);
-  box-shadow: 0px 1px 6px 3px var(--c-boxshadow);
+  background-color: transparent;
   margin-bottom: 2rem;
   flex-direction: row;
   border-radius:  0rem 0rem 0.5rem 0.5rem;
 
   .title {
-    flex: 10%;
+    flex: 50%;
     z-index: 0;
-    margin-left: 1rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: stretch;
@@ -28,16 +27,12 @@
   
   .router {
     z-index: 1;
-    background-color: var(--color-background);
-    border-right: 2px solid var(--color-background-mute);
-    border-left: 2px solid var(--color-background-mute);
-    border-radius: 0.5rem;
-    flex: 25%;
+    flex: 40%;
     align-items: center;
   }
 
   .user-actions {
-    z-index: 0;
+    z-index: 1;
     flex: 20%;
     display: flex;
     flex-direction: row;
@@ -45,13 +40,17 @@
     align-items: flex-end;
 
     .dark-mode-toggle {
-      padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+      padding: 0.85rem 1.5rem 0.85rem 1.5rem;
       font-weight: bold;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
 
       &:hover {
-        background-color: var(--color-background);
+        background-color: var(--color-background-soft);
+        box-shadow: 0px 0px 4px 2px var(--c-boxshadow);
         border-radius: 0.5rem;
-        border: 0px solid transparent;
+        border-right: 2px solid var(--color-background-soft);
+        border-left: 2px solid var(--color-background-soft);
         cursor: pointer;
       }
     }
@@ -72,8 +71,6 @@
     color: var(--color-brand-title);
     font-weight: bold;
     font-size: 16px;
-    border-right: 2px solid var(--color-background-soft);
-    border-left: 2px solid var(--color-background-soft);
     border-radius: 0.5rem;
     
     &:hover {

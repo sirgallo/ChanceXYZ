@@ -7,6 +7,8 @@ import {
 } from '@solana/web3.js';
 import { Store } from 'pinia';
 
+const CLUSTER_URI = 'devnet';
+
 export class WalletProvider {
   constructor(private publicKey, private store) {}
 
@@ -16,18 +18,12 @@ export class WalletProvider {
       return;
     }
 
-    const connection = new Connection(clusterApiUrl('devnet'));
+    const connection = new Connection(clusterApiUrl(CLUSTER_URI));
     
     const signature: string = await connection
       .requestAirdrop(this.publicKey.value, LAMPORTS_PER_SOL);
-    const latestBlockHash =  
-    await connection.confirmTransaction(
-      {
-        blockhash: latestBlockHash.blockhash,
-        lastValidBlockHeight: latestBlockHashv.lastValidBlockHeight,
-        signature: airdropSignature,
-      }
-    );
+    
+    const latestBlockHash =  await connection.confirmTransaction(signature);
 
     const lamports = await connection
       .getBalance(this.publicKey.value, 'confirmed');
