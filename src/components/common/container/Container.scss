@@ -8,3 +8,15 @@
   background-color: var(--color-background);
   box-shadow: 0px -1px 6px 3px var(--c-boxshadow);
 }
+
+@media screen and (max-width: 1920px) {
+  .v-container {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .v-container {
+    width: 80vw;
+  }
+}

@@ -8,7 +8,6 @@
 
   .footer-layer-top {
     flex: none;
-    width: 25%;
     z-index: 1;
     align-items: left;
     padding: 0.75rem;
@@ -30,5 +29,12 @@
   .footer-layer-base {
     flex: none;
     z-index: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .footer-layer-top {
+    flex: 100%;
+    width: 100%;
   }
 }
