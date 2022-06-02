@@ -10,4 +10,8 @@
     border-radius: 0.5rem;
     cursor: pointer;
   }
+
+  &:active {
+    color: rgb(18, 78, 156); 
+  }
 }
