@@ -1,42 +1,50 @@
 <script setup lang="ts">
-  import { useWallet } from 'solana-wallets-vue';
+  import { ref } from 'vue';
   import { storeToRefs } from 'pinia';
 
-  import { 
-  Connection, 
-  clusterApiUrl, 
-  LAMPORTS_PER_SOL 
-} from '@solana/web3.js';
+  import { useWallet } from 'solana-wallets-vue';
+  import {
+  Cluster,
+  Connection,
+  clusterApiUrl
+  } from '@solana/web3.js';
   
-  import { useBalanceStore } from '@stores/balance';
+  import { useWalletStore } from '@stores/wallet';
+  import {
+    WalletProvider
+  } from '@providers/WalletProvider';
 
-  const CLUSTER_URI = 'devnet';
-
-  function depositIntoPool() {
-    console.log('hi you clicked me!');
-  }
-
-  function withdrawFunds() {
-    console.log('hi you clicked me!');
-  }
-
-  function displayWalletBalance() {
-
-  }
-
-  //import { } from '@providers/'
+  const CLUSTER_URI: Cluster = 'devnet';
 
   interface DepositProps {
     title: string;
     titleIcon: 'Alt' | 'Stable';
   }
 
-  const { publicKey, connected } = useWallet();
-
   const props = defineProps<DepositProps>();
-  const store = useBalanceStore();
+  const store = useWalletStore();
 
-  const { balance } = storeToRefs(store);
+  store.setNetwork(CLUSTER_URI);
+
+  let currencyDeposit = ref(0);
+
+  const { balance, cluster } = storeToRefs(store);
+
+  const walletProvider = new WalletProvider(cluster.value);
+
+  async function depositIntoPoolClick() {
+    const newBalance = await walletProvider.depositIntoPool(currencyDeposit.value);
+    store.setBalance(newBalance);
+  }
+
+  async function withdrawFundsClick() {
+    await walletProvider.withdrawFunds();
+  }
+
+  async function devRequestAirdropClick() {
+    const newBalance = await walletProvider.devRequestAirdrop();
+    store.setBalance(newBalance);
+  }
 </script>
 
 <template>
@@ -50,12 +58,14 @@
     </div>
     <div class="wallet-stats">
       <div class="current-balance">
-        Current Wallet Balance: {{ store.balance }}
+        Current Wallet Balance: {{ balance }}
       </div>
+      <input class="input-box" v-model="currencyDeposit" placeholder=0 />
       <div class="pool-actions">
-        <div class="button-element" @click="depositIntoPool()">Deposit Funds</div>
-        <div class="button-element" @click="withdrawFunds()">Withdraw Funds</div>
-    </div>
+        <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
+        <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
+      </div>
+      <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
     </div>
   </div>
 </template>
