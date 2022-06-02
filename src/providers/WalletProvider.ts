@@ -24,21 +24,25 @@ export class WalletProvider {
   }
 
   async depositIntoPool(depositAmount: number) {
-    const { publicKey, sendTransaction } = useWallet();
-    if (! publicKey.value || depositAmount === 0) return;
+    try {
+      const { publicKey, sendTransaction } = useWallet();
+      if (! publicKey.value || depositAmount === 0) return;
 
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: publicKey.value,
-        toPubkey: Keypair.generate().publicKey,
-        lamports: depositAmount * LAMPORTS_PER_SOL
-      })
-    );
-    
-    const signature = await sendTransaction(transaction, this.connection);
-    await this.connection.confirmTransaction(signature, 'processed');
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey.value,
+          toPubkey: Keypair.generate().publicKey,
+          lamports: depositAmount * LAMPORTS_PER_SOL
+        })
+      );
+      
+      const signature = await sendTransaction(transaction, this.connection);
+      await this.connection.confirmTransaction(signature, 'processed');
 
-    return await this.updateBalance(this.connection, publicKey.value);
+      return await this.updateBalance(this.connection, publicKey.value);
+    } catch (err) {
+      console.error('Error Depositing');
+    }
   }
 
   async withdrawFunds() {
@@ -46,12 +50,16 @@ export class WalletProvider {
   }
 
   async devRequestAirdrop() {
-    const { publicKey } = useWallet();
-    if (! publicKey.value) return;
+    try {
+      const { publicKey } = useWallet();
+      if (! publicKey.value) return;
 
-    const signature: string = await this.connection.requestAirdrop(publicKey.value, LAMPORTS_PER_SOL);
-    await this.connection.confirmTransaction(signature, 'processed');
+      const signature: string = await this.connection.requestAirdrop(publicKey.value, LAMPORTS_PER_SOL);
+      await this.connection.confirmTransaction(signature, 'processed');
 
-    return await this.updateBalance(this.connection, publicKey.value);
+      return await this.updateBalance(this.connection, publicKey.value);
+    } catch (err) {
+      console.error('Error on Airdrop')
+    }
   }
 }

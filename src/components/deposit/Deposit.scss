@@ -44,6 +44,13 @@
       margin: 1rem;
     }
 
+    .input-beyond-max {
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin: 0 4rem 1rem 4rem;
+      background-color: rgb(243, 85, 85);
+    }
+
     .pool-actions {
       display: flex;
       flex-direction: row;

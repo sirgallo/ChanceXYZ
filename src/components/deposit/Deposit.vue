@@ -28,6 +28,8 @@
   const walletProvider = new WalletProvider(cluster.value);
 
   async function depositIntoPoolClick() {
+    if (currencyDeposit.value === 0) return;
+    
     const newBalance = await walletProvider.depositIntoPool(currencyDeposit.value);
     store.setBalance(newBalance);
   }
@@ -56,6 +58,7 @@
         Current Wallet Balance: {{ balance }}
       </div>
       <input class="input-box" v-model="currencyDeposit" placeholder=0 />
+      <div v-if="currencyDeposit > balance" class="input-beyond-max">deposit amount should not exceed balance</div>
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
