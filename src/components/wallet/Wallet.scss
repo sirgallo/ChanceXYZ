@@ -20,12 +20,7 @@
   font-family: 'Roboto Mono' !important;
 
   &:hover {
-    //border-radius: 0.5rem;
-    box-shadow: 0px 0px 4px 2px var(--c-boxshadow) !important;
-  }
-
-  &:active {
-    box-shadow: 0px 0px 8px 2px var(--c-boxshadow) !important;
+    box-shadow: none !important;
   }
 }
 
