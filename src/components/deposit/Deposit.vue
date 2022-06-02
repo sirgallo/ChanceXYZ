@@ -2,9 +2,7 @@
   import { ref } from 'vue';
   import { storeToRefs } from 'pinia';
 
-  import {
-  Cluster
-  } from '@solana/web3.js';
+  import { Cluster } from '@solana/web3.js';
   
   import { useWalletStore } from '@stores/wallet';
   import { WalletProvider } from '@providers/WalletProvider';
