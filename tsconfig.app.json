@@ -9,8 +9,7 @@
       "@app/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@stores/*": ["./src/stores/*"],
-      "@views/*": ["./src/views/*"],
-      "@providers/*": ["./providers/*"]
+      "@views/*": ["./src/views/*"]
     }
   }
 }

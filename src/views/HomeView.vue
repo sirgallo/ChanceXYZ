@@ -5,7 +5,7 @@
   <div class="view-container">
     <div class="init-padding"></div>
     <div class="home-container">
-      <h2>Hi, welcome to chance</h2>
+      <h2>Welcome to Chance</h2>
     </div>
     <div class="bottom-padding"></div>
   </div>
