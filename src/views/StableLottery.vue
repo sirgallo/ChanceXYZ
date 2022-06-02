@@ -4,6 +4,7 @@
 
 <template>
   <div class="view-container">
+    <div class="init-padding"></div>
     <Deposit 
       title="Stablecoin Lottery"
       titleIcon="Stable">
