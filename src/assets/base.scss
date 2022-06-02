@@ -29,6 +29,9 @@
   --c-brand-title-light: rgb(98, 128, 192);
   --c-brand-title-dark: rgb(66, 106, 124);
 
+  --c-button-light: rgb(132, 155, 202);
+  --c-button-dark: rgb(15, 106, 148);
+
   --color-background: var(--c-white);
   --color-background-soft: var(--c-white-soft);
   --color-background-mute: var(--c-light-gray-mute);
@@ -40,6 +43,7 @@
   --color-text: var(--c-text-light-1);
 
   --color-brand-title: var(--c-brand-title-light);
+  --color-button: var(--c-button-light);
 
   --section-gap: 160px;
 }
@@ -56,6 +60,8 @@
   --color-text: var(--c-text-dark-2);
 
   --color-brand-title: var(--c-brand-title-dark);
+
+  --color-button: var(--c-button-dark);
 }
 
 
