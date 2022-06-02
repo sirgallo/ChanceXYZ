@@ -2,17 +2,12 @@
   import { ref } from 'vue';
   import { storeToRefs } from 'pinia';
 
-  import { useWallet } from 'solana-wallets-vue';
   import {
-  Cluster,
-  Connection,
-  clusterApiUrl
+  Cluster
   } from '@solana/web3.js';
   
   import { useWalletStore } from '@stores/wallet';
-  import {
-    WalletProvider
-  } from '@providers/WalletProvider';
+  import { WalletProvider } from '@providers/WalletProvider';
 
   const CLUSTER_URI: Cluster = 'devnet';
 
