@@ -9,6 +9,7 @@
       title="Stablecoin Lottery"
       titleIcon="Stable">
     </Deposit>
+    <div class="bottom-padding"></div>
   </div>
 </template>
 

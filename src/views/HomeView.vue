@@ -6,7 +6,8 @@
     <div class="init-padding"></div>
     <div class="home-view-container">
       <p>Hi, welcome to chance</p>
-    </div> 
+    </div>
+    <div class="bottom-padding"></div>
   </div>
 </template>
 

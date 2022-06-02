@@ -5,6 +5,7 @@
   <div class="view-container">
     <div class="init-padding"></div>
     <p>currently a stub...</p>
+    <div class="bottom-padding"></div>
   </div>
 </template>
 
