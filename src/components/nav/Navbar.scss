@@ -38,6 +38,7 @@
 
     .dark-mode-toggle {
       @extend .v-button;
+      border-radius: 0.5rem;
     }
   }
 }
