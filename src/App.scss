@@ -26,7 +26,17 @@
       scrollbar-width: none;  /* Firefox */
 
       &::-webkit-scrollbar {
-        display: none;
+        background: transparent;
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--color-background-soft);
+        border-radius: 0.5rem;
       }
     }
   }
