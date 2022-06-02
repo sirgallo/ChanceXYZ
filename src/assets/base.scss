@@ -18,9 +18,9 @@
   --c-divider-dark-1: rgba(138, 79, 79, 0.65);
   --c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-  --c-text-light-1: var(--c-indigo);
-  --c-text-light-2: rgba(60, 60, 60, 0.66);
-  --c-text-dark-1: var(--c-white);
+  --c-text-light-1: rgb(44, 48, 51);
+  --c-text-light-2: rgba(56, 57, 59, 0.918);
+  --c-text-dark-1: var(--c-white-soft);
   --c-text-dark-2: rgba(235, 235, 235, 0.64);
 
   --c-boxshadow: rgb(228, 241, 255);
@@ -39,7 +39,7 @@
   --color-border: var(--c-divider-light-2);
   --color-border-hover: var(--c-divider-light-1);
 
-  --color-heading: var(--c-text-light-1);
+  --color-heading: var(--c-text-light-2);
   --color-text: var(--c-text-light-1);
 
   --color-brand-title: var(--c-brand-title-light);
