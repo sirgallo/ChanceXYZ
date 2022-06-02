@@ -4,7 +4,9 @@
 <template>
   <div class="view-container">
     <div class="init-padding"></div>
-    <p>currently a stub...</p>
+    <div class="analysis-container">
+      <h2>Coming Soon</h2>
+    </div>
     <div class="bottom-padding"></div>
   </div>
 </template>

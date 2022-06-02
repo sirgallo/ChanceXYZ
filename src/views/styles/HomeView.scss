@@ -1,9 +1,5 @@
 @import '@components/common/container/Container.scss';
 
-.home-view-container {
+.home-container {
   @extend .v-container;
-  height: 1200px;
-  max-height: 3200px;
-  width: 80vw;
-  //overflow-y: scroll;
 }

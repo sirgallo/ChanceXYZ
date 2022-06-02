@@ -4,8 +4,8 @@
 <template>
   <div class="view-container">
     <div class="init-padding"></div>
-    <div class="home-view-container">
-      <p>Hi, welcome to chance</p>
+    <div class="home-container">
+      <h2>Hi, welcome to chance</h2>
     </div>
     <div class="bottom-padding"></div>
   </div>
