@@ -5,7 +5,9 @@
   <div class="view-container">
     <div class="init-padding"></div>
     <div class="home-container">
-      <h2>Welcome to Chance</h2>
+      <div class="home-title">
+        <h2>Welcome to Chance</h2>
+      </div>
     </div>
     <div class="bottom-padding"></div>
   </div>
@@ -14,4 +16,13 @@
 <style lang="scss">
   @import '@views/styles/Shared.scss';
   @import '@views/styles/HomeView.scss';
+
+  .home-title {
+    padding: 0.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    border: 2px solid var(--color-brand-title);
+    box-shadow: 0px 6px 3px -3px var(--color-brand-title);
+  }
 </style>
