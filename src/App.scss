@@ -15,12 +15,11 @@
 
   .stage {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+
     .view {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       height: 100%;
       overflow-y: scroll;
       -ms-overflow-style: none;  /* IE and Edge */
