@@ -60,7 +60,9 @@
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
       </div>
-      <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
+      <div class="dev">
+        <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
+      </div>
     </div>
   </div>
 </template>
