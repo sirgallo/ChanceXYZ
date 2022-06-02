@@ -25,6 +25,9 @@
         <i v-else class="fa-lg fa-brands fa-bitcoin bitcoin-color"></i>
       </div>
     </div>
+    <div class="wallet-stats">
+      <p>Current Wallet Balance: {{ store.balance }}</p>
+    </div>
     <!--
     <button @click="requestAirdrop()">request airdrop</button>
     <p>Current Wallet Balance: {{ store.balance }}</p>

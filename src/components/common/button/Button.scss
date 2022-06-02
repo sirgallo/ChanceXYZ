@@ -1,0 +1,13 @@
+.v-button {
+  padding: 0.85rem 1.5rem 0.85rem 1.5rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+
+  &:hover {
+    background-color: var(--color-background-soft);
+    box-shadow: 0px 0px 4px 2px var(--c-boxshadow);
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+}

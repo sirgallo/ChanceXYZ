@@ -1,4 +1,4 @@
-@import '@app/components/common/container/Container.scss';
+@import '@components/common/container/Container.scss';
 
 .deposit-container {
   @extend .v-container; //base-container
@@ -24,6 +24,15 @@
     .deposit-title-icon {
       padding: 0.5rem;
     }
+  }
+
+  .wallet-stats {
+    @extend .v-container;
+    flex: none;
+    height: 80%;
+    width: 85%;
+    align-items: center;
+    text-align: center;
   }
 }
 

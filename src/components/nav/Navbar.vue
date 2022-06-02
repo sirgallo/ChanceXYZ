@@ -16,15 +16,9 @@
     </div>
     <div class="router">
       <nav class="router-wrapper">
-        <div class="router-link-wrap">
-          <RouterLink class="router-link" to="/">Home</RouterLink>
-        </div>
-        <div class="router-link-wrap">
-          <RouterLink class="router-link" to="/stable">Lottery</RouterLink>
-        </div>
-        <div class="router-link-wrap">
-          <RouterLink class="router-link" to="/analysis">Analytics</RouterLink>
-        </div>
+        <RouterLink class="router-link" to="/">Home</RouterLink>
+        <RouterLink class="router-link" to="/stable">Lottery</RouterLink>
+        <RouterLink class="router-link" to="/analysis">Analytics</RouterLink>
       </nav>
     </div>
     <div class="user-actions">
