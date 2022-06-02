@@ -1,7 +1,30 @@
 <script setup lang="ts">
   import { useWallet } from 'solana-wallets-vue';
   import { storeToRefs } from 'pinia';
+
+  import { 
+  Connection, 
+  clusterApiUrl, 
+  LAMPORTS_PER_SOL 
+} from '@solana/web3.js';
+  
   import { useBalanceStore } from '@stores/balance';
+
+  const CLUSTER_URI = 'devnet';
+
+  function depositIntoPool() {
+    console.log('hi you clicked me!');
+  }
+
+  function withdrawFunds() {
+    console.log('hi you clicked me!');
+  }
+
+  function displayWalletBalance() {
+
+  }
+
+  //import { } from '@providers/'
 
   interface DepositProps {
     title: string;
@@ -26,12 +49,14 @@
       </div>
     </div>
     <div class="wallet-stats">
-      <p>Current Wallet Balance: {{ store.balance }}</p>
+      <div class="current-balance">
+        Current Wallet Balance: {{ store.balance }}
+      </div>
+      <div class="pool-actions">
+        <div class="button-element" @click="depositIntoPool()">Deposit Funds</div>
+        <div class="button-element" @click="withdrawFunds()">Withdraw Funds</div>
     </div>
-    <!--
-    <button @click="requestAirdrop()">request airdrop</button>
-    <p>Current Wallet Balance: {{ store.balance }}</p>
-    -->
+    </div>
   </div>
 </template>
 
