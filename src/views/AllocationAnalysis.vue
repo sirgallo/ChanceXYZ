@@ -1,4 +1,11 @@
-<script setup lang="ts">
+<script setup lang="ts"> 
+  import { ref } from 'vue';
+
+  const x = ref(225);
+
+  function onMousemove(e) {
+    x.value = e.clientX;
+  }
 </script>
 
 <template>
@@ -6,7 +13,12 @@
     <div class="init-padding"></div>
     <div class="analysis-container">
       <div class="analysis-title">
-        <h2>Coming Soon</h2>
+        <h2
+          @mousemove="onMousemove"
+          :style="{ color: `hsl(${x}, 55%, 65%)` }"
+          class="color-change">
+          Coming Soon<b class="hidden-ref">{{ x }}</b>
+        </h2>
       </div>
     </div>
     <div class="bottom-padding"></div>

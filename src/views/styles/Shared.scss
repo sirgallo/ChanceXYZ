@@ -11,6 +11,14 @@
   padding: 1rem;
 }
 
+.color-change {
+  transition: 0.3s background-color ease;
+}
+
+.hidden-ref {
+  display: none;
+}
+
 h2 {
   font-weight: bolder;
   color: var(--color-heading);

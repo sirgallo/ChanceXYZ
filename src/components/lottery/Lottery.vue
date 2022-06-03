@@ -20,10 +20,15 @@
 
   const currencyDeposit = ref(0);
   const currencyWithdraw = ref(0);
+  const x = ref(225);
 
   const { balance, cluster } = storeToRefs(walletStore);
 
   const walletProvider = new WalletProvider(cluster.value);
+
+  function onMousemove(e) {
+    x.value = e.clientX;
+  }
 
   function toggleDeposit(truthy: boolean) {
     isDeposit.value = truthy;
@@ -49,9 +54,14 @@
 <template>
   <div class="lottery-container">
     <div class="lottery-title">
-      <h2>{{ title }}</h2>
+      <h2 
+        @mousemove="onMousemove"
+        :style="{ color: `hsl(${x}, 55%, 65%)` }"
+        class="color-change">
+        {{ title }}
+      </h2>
       <div class="lottery-title-icon">
-        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color"></i>
+        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color">{{ x }}</i>
         <i v-else class="fa-lg fa-brands fa-bitcoin bitcoin-color"></i>
       </div>
     </div>
