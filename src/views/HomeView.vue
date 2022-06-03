@@ -38,7 +38,7 @@
     align-items: center;
     margin-bottom: 1.5rem;
     border-radius: 1rem;
-    //border: 2px solid var(--color-brand-title);
+    border: 0px solid transparent;
     box-shadow: 0px 6px 3px -3px var(--color-brand-title);
   }
 </style>
