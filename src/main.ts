@@ -17,6 +17,7 @@ import FontAwesomeIcon from '@app/FontAwesomeLoader';
 
 import PrimeVue from 'primevue/config';
 import Tooltip from 'primevue/tooltip';
+import Knob from 'primevue/knob';
 
 const app = createApp(App);
 
@@ -37,5 +38,6 @@ app.use(SolanaWallets, walletOpts);
 app.directive('tooltip', Tooltip);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
+app.component('Knob', Knob);
 
 app.mount('#app');

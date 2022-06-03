@@ -71,11 +71,15 @@
       <div class="toggle-button-element" @click="toggleDeposit(false)">Withdraw</div>
     </div>
     <div v-if="lotteryToggleDeposit" class="wallet-stats">
-      <input class="input-box" v-model="currencyDeposit" placeholder=0 />
-      <div class="current-balance">
-        <span>Wallet Balance: <b>{{ balance }}</b></span>
-      </div>
-      <div v-if="currencyDeposit > balance" class="input-beyond-max">deposit amount cannot exceed current balance</div>
+      <Knob
+        v-model="currencyDeposit"
+        :min="0"
+        :max="balance"
+        :size="250"
+        :step="0.01"
+        valueColor="var(--c-green)" 
+        rangeColor="var(--color-background-invert)">
+      </Knob>
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
       </div>
@@ -84,11 +88,15 @@
       </div>
     </div>
     <div v-else class="wallet-stats">
-      <input class="input-box" v-model="currencyWithdraw" placeholder=0 />
-      <div class="current-balance">
-        <span>Wallet Balance: <b>{{ balance }}</b></span>
-      </div>
-      <div v-if="currencyWithdraw > balance" class="input-beyond-max">withdraw amount cannot exceed deposited amount</div>
+      <Knob
+        v-model="currencyWithdraw"
+        :min="0"
+        :max="balance"
+        :size="250"
+        :step="0.01"
+        valueColor="var(--c-orange)" 
+        rangeColor="var(--color-background-invert)">
+      </Knob>
       <div class="pool-actions">
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
       </div>
