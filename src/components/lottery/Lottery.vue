@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, Ref } from 'vue';
+  import { ref, Ref, watch } from 'vue';
   import { storeToRefs } from 'pinia';
   
   import { useWalletStore } from '@stores/wallet';
@@ -12,6 +12,8 @@
     title: string;
     titleIcon: 'Alt' | 'Stable';
   }
+
+  const MAX_SIG_FIGS = 3;
 
   const props = defineProps<DepositProps>();
   
@@ -51,6 +53,26 @@
     const newBalance = await walletProvider.devRequestAirdrop();
     walletStore.setBalance(newBalance);
   }
+
+  watch(currencyDeposit, async val => {
+    if (val > balance.value) {
+      currencyDeposit.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
+    } else if (val <= 0) {
+      currencyDeposit.value = 0;
+    } else {
+      currencyDeposit.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
+    }
+  });
+
+  watch(currencyWithdraw, async val => {
+    if (val > balance.value) {
+      currencyWithdraw.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
+    } else if (val < 0) {
+      currencyWithdraw.value = 0;
+    } else {
+      currencyWithdraw.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
+    }
+  });
 </script>
 
 <template>
@@ -80,7 +102,7 @@
         valueColor="var(--c-green)" 
         rangeColor="var(--color-background)">
       </Knob>
-      <input class="input-box" v-model="currencyDeposit" placeholder=0 />
+      <input class="input-box" type="number" v-model="currencyDeposit" placeholder=0 />
       <div class="current-balance">
         <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
@@ -99,7 +121,7 @@
         valueColor="var(--c-orange)" 
         rangeColor="var(--color-background)">
       </Knob>
-      <input class="input-box" v-model="currencyWithdraw" placeholder=0 />
+      <input class="input-box" type="number" v-model="currencyWithdraw" placeholder=0 />
       <div class="current-balance">
         <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
