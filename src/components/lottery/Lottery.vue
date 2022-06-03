@@ -16,11 +16,18 @@
 
   walletStore.setNetwork(CLUSTER_URI);
 
+  const isDeposit = ref(true)
+
   const currencyDeposit = ref(0);
+  const currencyWithdraw = ref(0);
 
   const { balance, cluster } = storeToRefs(walletStore);
 
   const walletProvider = new WalletProvider(cluster.value);
+
+  function toggleDeposit(truthy: boolean) {
+    isDeposit.value = truthy;
+  }
 
   async function depositIntoPoolClick() {
     if (currencyDeposit.value === 0) return;
@@ -40,31 +47,44 @@
 </script>
 
 <template>
-  <div class="deposit-container">
-    <div class="deposit-title">
+  <div class="lottery-container">
+    <div class="lottery-title">
       <h2>{{ title }}</h2>
-      <div class="deposit-title-icon">
+      <div class="lottery-title-icon">
         <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color"></i>
         <i v-else class="fa-lg fa-brands fa-bitcoin bitcoin-color"></i>
       </div>
     </div>
-    <div class="wallet-stats">
+    <div class="toggle-buttons">
+      <div class="toggle-button-element" tabindex="1" @click="toggleDeposit(true)">Deposit</div>
+      <div class="toggle-button-element" tabindex="2" @click="toggleDeposit(false)">Withdraw</div>
+    </div>
+    <div v-if="isDeposit" class="wallet-stats">
       <input class="input-box" v-model="currencyDeposit" placeholder=0 />
       <div class="current-balance">
-        <b>Wallet Balance:</b> {{ balance }}
+        <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
       <div v-if="currencyDeposit > balance" class="input-beyond-max">deposit amount should not exceed balance</div>
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
-        <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
-      </div>
-      <div class="dev">
-        <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
       </div>
     </div>
+    <div v-else class="wallet-stats">
+      <input class="input-box" v-model="currencyWithdraw" placeholder=0 />
+      <div class="current-balance">
+        <span>Wallet Balance: <b>{{ balance }}</b></span>
+      </div>
+      <div v-if="currencyWithdraw > balance" class="input-beyond-max">withdraw amount cannot exceed deposited amount</div>
+      <div class="pool-actions">
+        <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
+      </div>
+    </div>
+    <div class="dev">
+        <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
+      </div>
   </div>
 </template>
 
 <style lang="scss">
-  @import '@app/components/deposit/Deposit.scss';
+  @import '@app/components/lottery/Lottery.scss';
 </style>

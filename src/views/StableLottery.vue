@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import Deposit from '@components/deposit/Deposit.vue';
+  import Lottery from '@components/lottery/Lottery.vue';
 </script>
 
 <template>
   <div class="view-container">
     <div class="init-padding"></div>
-    <Deposit 
+    <Lottery
       title="Stablecoin Lottery"
       titleIcon="Stable">
-    </Deposit>
+    </Lottery>
     <div class="bottom-padding"></div>
   </div>
 </template>
