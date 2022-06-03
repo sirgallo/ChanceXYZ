@@ -6,7 +6,8 @@
   justify-content: normal;
   border-radius: 3rem 3rem 0 0;
   padding: 0rem;
-  border: 2px solid var(--color-brand-title);
+  //border: 2px solid var(--color-brand-title);
+  box-shadow: 0px 0px 10px 2px var(--color-brand-title);
 
   b {
     font-weight: bolder;
@@ -45,7 +46,7 @@
   padding: 0.25rem;
   text-align: center;
   border-radius: 0 0 1rem 1rem;
-  border: 2px solid var(--color-brand-title);
+  //border: 2px solid var(--color-brand-title);
   border-top: 0px solid transparent;
   box-shadow: 0px 6px 3px -3px var(--color-brand-title);
 }
