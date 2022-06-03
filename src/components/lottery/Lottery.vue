@@ -4,7 +4,9 @@
   
   import { useWalletStore } from '@stores/wallet';
   import { WalletProvider } from '@providers/WalletProvider';
+  
   import { CLUSTER_URI } from '@app/configs/Cluster';
+  import { defaultHSLColor } from '@app/configs/Animation';
 
   interface DepositProps {
     title: string;
@@ -20,7 +22,7 @@
 
   const currencyDeposit = ref(0);
   const currencyWithdraw = ref(0);
-  const x = ref(225);
+  const x = ref(defaultHSLColor);
 
   const { balance, cluster } = storeToRefs(walletStore);
 

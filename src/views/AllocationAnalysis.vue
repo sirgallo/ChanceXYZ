@@ -1,7 +1,8 @@
 <script setup lang="ts"> 
   import { ref } from 'vue';
-
-  const x = ref(225);
+  import { defaultHSLColor } from '@app/configs/Animation';
+  
+  const x = ref(defaultHSLColor);
 
   function onMousemove(e) {
     x.value = e.clientX;
