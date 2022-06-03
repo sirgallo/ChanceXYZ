@@ -64,7 +64,7 @@
       <div class="current-balance">
         <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
-      <div v-if="currencyDeposit > balance" class="input-beyond-max">deposit amount should not exceed balance</div>
+      <div v-if="currencyDeposit > balance" class="input-beyond-max">deposit amount cannot exceed current balance</div>
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
       </div>
