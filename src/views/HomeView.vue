@@ -18,6 +18,7 @@
   @import '@views/styles/HomeView.scss';
 
   .home-title {
+    background-color: var(--color-background-soft);
     padding: 0.5rem;
     align-items: center;
     margin-bottom: 1.5rem;
