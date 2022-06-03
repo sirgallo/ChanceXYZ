@@ -1,1 +1,1 @@
-export const defaultHSLColor: number = 235;
+export const defaultHSLColor: number = 190;
