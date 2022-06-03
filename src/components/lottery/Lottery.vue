@@ -79,6 +79,9 @@
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
       </div>
+      <div class="pool-actions">
+        <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
+      </div>
     </div>
     <div v-else class="wallet-stats">
       <input class="input-box" v-model="currencyWithdraw" placeholder=0 />
@@ -89,10 +92,10 @@
       <div class="pool-actions">
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
       </div>
-    </div>
-    <div class="dev">
+      <div class="pool-actions">
         <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
       </div>
+    </div>
   </div>
 </template>
 
