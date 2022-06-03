@@ -13,7 +13,9 @@ export const useWalletStore = defineStore('balance', {
   },
   actions: {
     setBalance(balance: number) {
-      this.balance = balance;
+      if (balance && balance !== this.balance) {
+        this.balance = balance;
+      }
     },
     setNetwork(network: Cluster) {
       this.cluster = network
