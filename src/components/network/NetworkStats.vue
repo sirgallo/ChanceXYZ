@@ -11,7 +11,6 @@
 
   function isNetworkStable() {
     if (tps.value < 1300) {
-      console.log('here', tps);
       stable.value = false;
     } else {
       stable.value = true;
