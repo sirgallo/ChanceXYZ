@@ -8,7 +8,7 @@
   const { cluster, tps } = storeToRefs(networkStore);
 
   onMounted(() => {
-    setTimeout(() => networkStore.setPerformanceMetrics(), 2000);
+    setTimeout(async () => await networkStore.setPerformanceMetrics(), 2000);
   });
 </script>
 

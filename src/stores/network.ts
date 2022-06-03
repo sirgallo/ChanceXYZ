@@ -27,10 +27,10 @@ export const useNetworkStore = defineStore('network', {
       
       const resp: PerformanceMetricsResponse = await statsProvider.getRecentPerformanceSamples(apiEndpoint);
 
-      console.log(resp);
-
       const newTps = Math.floor(resp.result[0].numTransactions / resp.result[0].samplePeriodSecs);
-      this.tps = newTps;
+      if (newTps !== this.tps) {
+        this.tps = newTps;
+      }
     }
   }
 });
