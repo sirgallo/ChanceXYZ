@@ -8,7 +8,7 @@
 
   import { useWalletStore } from '@stores/wallet';
   import { WalletProvider } from '@providers/WalletProvider';
-  import { CLUSTER_URI} from '@app/configs/Cluster';
+  import { CLUSTER_URI } from '@app/configs/Cluster';
   
   const { connected } = useWallet();
   
