@@ -57,7 +57,7 @@
   watch(currencyDeposit, async val => {
     if (val > balance.value) {
       currencyDeposit.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
-    } else if (val <= 0) {
+    } else if (val < 0) {
       currencyDeposit.value = 0;
     } else {
       currencyDeposit.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
