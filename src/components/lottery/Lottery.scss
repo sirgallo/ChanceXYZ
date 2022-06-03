@@ -42,10 +42,33 @@
 
     .input-box {
       border-radius: 0.5rem;
-      border: 2px solid var(--color-background-invert);
+      font-family: 'Roboto Mono';
+      font-weight: bolder;
+      font-size: 14px;
+      background: var(--color-background-invert);
+      color: var(--color-text-invert);
+      border: none;
       box-shadow: 0px 0px 6px 3px var(--color-boxshadow);
-      padding: 1rem 1.5rem 1rem 1.5rem;
-      margin: 3rem 1rem 1rem 1rem;
+      padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+      margin: 1rem;
+    }
+
+    .current-balance {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+
+      span {
+        color: var(--color-text-invert);
+        padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        background-color: var(--color-background-invert);
+        box-shadow: 0px 0px 6px 3px var(--color-boxshadow);
+
+        b {
+          font-weight: bolder;
+        }
+      }
     }
 
     .pool-actions {

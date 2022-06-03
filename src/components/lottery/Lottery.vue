@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, Ref } from 'vue';
   import { storeToRefs } from 'pinia';
   
   import { useWalletStore } from '@stores/wallet';
@@ -23,8 +23,8 @@
   const { balance } = storeToRefs(walletStore);
   const { cluster } = storeToRefs(networkStore);
 
-  const currencyDeposit = ref(0);
-  const currencyWithdraw = ref(0);
+  const currencyDeposit: Ref<number> = ref(0);
+  const currencyWithdraw: Ref<number> = ref(0);
 
   const walletProvider = new WalletProvider(cluster.value);
 
@@ -71,19 +71,21 @@
       <div class="toggle-button-element" @click="toggleDeposit(false)">Withdraw</div>
     </div>
     <div v-if="lotteryToggleDeposit" class="wallet-stats">
-      <Knob
+       <Knob
         v-model="currencyDeposit"
         :min="0"
         :max="balance"
-        :size="250"
+        :size="175"
         :step="0.01"
         valueColor="var(--c-green)" 
         rangeColor="var(--color-background)">
       </Knob>
-      <div class="pool-actions">
-        <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
+      <input class="input-box" v-model="currencyDeposit" placeholder=0 />
+      <div class="current-balance">
+        <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
       <div class="pool-actions">
+        <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
         <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
       </div>
     </div>
@@ -92,15 +94,17 @@
         v-model="currencyWithdraw"
         :min="0"
         :max="balance"
-        :size="250"
+        :size="175"
         :step="0.01"
         valueColor="var(--c-orange)" 
         rangeColor="var(--color-background)">
       </Knob>
-      <div class="pool-actions">
-        <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
+      <input class="input-box" v-model="currencyWithdraw" placeholder=0 />
+      <div class="current-balance">
+        <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
       <div class="pool-actions">
+        <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
         <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
       </div>
     </div>
@@ -108,5 +112,5 @@
 </template>
 
 <style lang="scss">
-  @import '@app/components/lottery/Lottery.scss';
+  @import '@components/lottery/Lottery.scss';
 </style>
