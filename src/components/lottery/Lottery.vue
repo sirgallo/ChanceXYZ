@@ -78,7 +78,7 @@
         :size="250"
         :step="0.01"
         valueColor="var(--c-green)" 
-        rangeColor="var(--color-background-invert)">
+        rangeColor="var(--color-background)">
       </Knob>
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
@@ -95,7 +95,7 @@
         :size="250"
         :step="0.01"
         valueColor="var(--c-orange)" 
-        rangeColor="var(--color-background-invert)">
+        rangeColor="var(--color-background)">
       </Knob>
       <div class="pool-actions">
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
