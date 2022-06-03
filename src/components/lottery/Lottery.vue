@@ -55,22 +55,26 @@
   }
 
   watch(currencyDeposit, async val => {
-    if (val > balance.value) {
-      currencyDeposit.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
-    } else if (val < 0) {
-      currencyDeposit.value = 0;
-    } else {
-      currencyDeposit.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
+    if (val) {
+      if (val > balance.value) {
+        currencyDeposit.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
+      } else if (val < 0) {
+        currencyDeposit.value = 0;
+      } else {
+        currencyDeposit.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
+      }
     }
   });
 
   watch(currencyWithdraw, async val => {
-    if (val > balance.value) {
-      currencyWithdraw.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
-    } else if (val < 0) {
-      currencyWithdraw.value = 0;
-    } else {
-      currencyWithdraw.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
+    if (val) {
+      if (val > balance.value) {
+        currencyWithdraw.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
+      } else if (val < 0) {
+        currencyWithdraw.value = 0;
+      } else {
+        currencyWithdraw.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
+      }
     }
   });
 </script>
@@ -100,7 +104,8 @@
         :size="175"
         :step="0.01"
         valueColor="var(--c-green)" 
-        rangeColor="var(--color-background)">
+        rangeColor="var(--color-background)"
+        :stroke="5">
       </Knob>
       <input class="input-box" type="number" v-model="currencyDeposit" placeholder=0 />
       <div class="current-balance">
