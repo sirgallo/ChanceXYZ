@@ -13,7 +13,7 @@
 
   .network-stats-layer-top {
     z-index: 1;
-    align-items: right;
+    align-items: center;
     justify-content: right;
     padding: 0.75rem;
 
@@ -32,15 +32,36 @@
       border-radius: 0.5rem;
       padding: 0.25rem;
     }
+
+    .network-warn-status {
+      max-width: 250px;
+      text-align: center;
+      color: var(--color-text-invert);
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      background-color: rgb(228, 228, 1);
+    }
   }
 
-  .blinker {
+  .blinker-warn {
     padding-left: 0.25rem;
     color: rgb(228, 228, 1);
     animation: blinker 2s linear infinite;
   }
 
-  @keyframes blinker {
+  .blinker-okay {
+    @extend .blinker-warn;
+    color: rgb(44, 228, 167);
+  }
+
+  @keyframes blinker-warn {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes blinker-okay {
     50% {
       opacity: 0;
     }
