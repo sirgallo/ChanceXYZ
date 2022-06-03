@@ -64,12 +64,11 @@
       </h2>
       <div class="lottery-title-icon">
         <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color">{{ x }}</i>
-        <i v-else class="fa-lg fa-brands fa-bitcoin bitcoin-color"></i>
       </div>
     </div>
     <div class="toggle-buttons">
-      <div class="toggle-button-element" tabindex="1" @click="toggleDeposit(true)">Deposit</div>
-      <div class="toggle-button-element" tabindex="2" @click="toggleDeposit(false)">Withdraw</div>
+      <div class="toggle-button-element" @click="toggleDeposit(true)">Deposit</div>
+      <div class="toggle-button-element" @click="toggleDeposit(false)">Withdraw</div>
     </div>
     <div v-if="isDeposit" class="wallet-stats">
       <input class="input-box" v-model="currencyDeposit" placeholder=0 />
