@@ -1,13 +1,10 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { storeToRefs } from 'pinia';
-
-  import { Cluster } from '@solana/web3.js';
   
   import { useWalletStore } from '@stores/wallet';
   import { WalletProvider } from '@providers/WalletProvider';
-
-  const CLUSTER_URI: Cluster = 'devnet';
+  import { CLUSTER_URI} from '@app/configs/Cluster';
 
   interface DepositProps {
     title: string;
@@ -15,13 +12,13 @@
   }
 
   const props = defineProps<DepositProps>();
-  const store = useWalletStore();
+  const walletStore = useWalletStore();
 
-  store.setNetwork(CLUSTER_URI);
+  walletStore.setNetwork(CLUSTER_URI);
 
-  let currencyDeposit = ref(0);
+  const currencyDeposit = ref(0);
 
-  const { balance, cluster } = storeToRefs(store);
+  const { balance, cluster } = storeToRefs(walletStore);
 
   const walletProvider = new WalletProvider(cluster.value);
 
@@ -29,7 +26,7 @@
     if (currencyDeposit.value === 0) return;
     
     const newBalance = await walletProvider.depositIntoPool(currencyDeposit.value);
-    store.setBalance(newBalance);
+    walletStore.setBalance(newBalance);
   }
 
   async function withdrawFundsClick() {
@@ -38,7 +35,7 @@
 
   async function devRequestAirdropClick() {
     const newBalance = await walletProvider.devRequestAirdrop();
-    store.setBalance(newBalance);
+    walletStore.setBalance(newBalance);
   }
 </script>
 

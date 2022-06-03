@@ -1,10 +1,31 @@
 <script setup lang="ts">
+  import { watch } from 'vue';
   import { useDark, useToggle } from '@vueuse/core';
+  import { useWallet } from 'solana-wallets-vue';
+  import { storeToRefs } from 'pinia';
 
   import Wallet from '@app/components/wallet/Wallet.vue';
+
+  import { useWalletStore } from '@stores/wallet';
+  import { WalletProvider } from '@providers/WalletProvider';
+  import { CLUSTER_URI} from '@app/configs/Cluster';
   
+  const { connected } = useWallet();
+  
+  const walletStore = useWalletStore();
+  const { balance, cluster } = storeToRefs(walletStore);
+
+  const walletProvider = new WalletProvider(CLUSTER_URI);
+
   const isDark = useDark();
   const toggleDark = useToggle(isDark);
+
+  watch(connected, async val => {
+    if (val) {
+      const currBalance = await walletProvider.getBalance();
+      walletStore.setBalance(currBalance);
+    }
+  });
 </script>
 
 <template>
