@@ -51,7 +51,7 @@
     <div class="wallet-stats">
       <input class="input-box" v-model="currencyDeposit" placeholder=0 />
       <div class="current-balance">
-        Current Wallet Balance: {{ balance }}
+        <b>Wallet Balance:</b> {{ balance }}
       </div>
       <div v-if="currencyDeposit > balance" class="input-beyond-max">deposit amount should not exceed balance</div>
       <div class="pool-actions">

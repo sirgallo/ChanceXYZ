@@ -43,8 +43,12 @@
     }
 
     .current-balance {
-      margin-top: 0;
-      margin-bottom: 3rem;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      
+      b {
+        font-weight: bolder;
+      }
     }
 
     .input-beyond-max {
