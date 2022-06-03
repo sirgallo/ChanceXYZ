@@ -7,9 +7,6 @@
   import { useNetworkStore } from '@stores/network';
 
   import { WalletProvider } from '@providers/WalletProvider';
-  
-  import { CLUSTER_URI } from '@app/configs/Cluster';
-  import { defaultHSLColor } from '@app/configs/Animation';
 
   interface DepositProps {
     title: string;
@@ -28,8 +25,6 @@
 
   const currencyDeposit = ref(0);
   const currencyWithdraw = ref(0);
-  const x = xPos;
-  const isDeposit = lotteryToggleDeposit;
 
   const walletProvider = new WalletProvider(cluster.value);
 
@@ -63,19 +58,19 @@
     <div class="lottery-title">
       <h2 
         @mousemove="onMousemove"
-        :style="{ color: `hsl(${x}, 55%, 65%)` }"
+        :style="{ color: `hsl(${xPos}, 55%, 65%)` }"
         class="color-change">
         {{ title }}
       </h2>
       <div class="lottery-title-icon">
-        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color">{{ x }}</i>
+        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color">{{ xPos }}</i>
       </div>
     </div>
     <div class="toggle-buttons">
       <div class="toggle-button-element" @click="toggleDeposit(true)">Deposit</div>
       <div class="toggle-button-element" @click="toggleDeposit(false)">Withdraw</div>
     </div>
-    <div v-if="isDeposit" class="wallet-stats">
+    <div v-if="lotteryToggleDeposit" class="wallet-stats">
       <input class="input-box" v-model="currencyDeposit" placeholder=0 />
       <div class="current-balance">
         <span>Wallet Balance: <b>{{ balance }}</b></span>

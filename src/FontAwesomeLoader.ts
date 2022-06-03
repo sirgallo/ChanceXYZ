@@ -7,7 +7,8 @@ import {
   faMoneyBillWave,
   faHouse,
   faChartBar,
-  faToggleOff
+  faToggleOff,
+  faCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -23,7 +24,8 @@ class FontAwesomeLoader {
       faBitcoin,
       faHouse,
       faChartBar,
-      faToggleOff
+      faToggleOff,
+      faCircle
     ];
 
     library.add(...iconList);

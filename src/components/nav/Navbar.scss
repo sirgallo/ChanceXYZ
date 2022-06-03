@@ -9,7 +9,7 @@
   flex-direction: row;
 
   .title {
-    flex: 50%;
+    flex: 25%;
     z-index: 0;
     padding-left: 1rem;
     display: flex;
@@ -24,7 +24,7 @@
   
   .router {
     z-index: 1;
-    flex: 40%;
+    flex: none;
     align-items: center;
   }
 

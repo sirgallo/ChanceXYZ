@@ -5,8 +5,6 @@
   const featureStore = useFeatureStore();
 
   const { xPos } = storeToRefs(featureStore);
-  
-  const x = xPos;
 
   function onMousemove(e) {
     featureStore.setXPos(e.clientX);
@@ -20,9 +18,9 @@
       <div class="home-title">
         <h2
           @mousemove="onMousemove"
-          :style="{ color: `hsl(${x}, 55%, 65%)` }"
+          :style="{ color: `hsl(${xPos}, 55%, 65%)` }"
           class="color-change">
-          Welcome to Chance<b class="hidden-ref">{{ x }}</b>
+          Welcome to Chance<b class="hidden-ref">{{ xPos }}</b>
         </h2>
       </div>
     </div>
