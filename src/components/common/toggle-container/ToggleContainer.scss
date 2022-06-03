@@ -38,6 +38,7 @@
     }
 
     &:focus {
+      border: 2px solid var(--color-brand-title);
       background-color: var(--color-brand-title);
       cursor: pointer;
     }
