@@ -18,7 +18,7 @@
   }
 
   onMounted(() => {
-    setTimeout(async () => { 
+    setInterval(async () => { 
       await networkStore.setPerformanceMetrics();
       isNetworkStable();
     }, 2000);

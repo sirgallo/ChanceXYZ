@@ -1,0 +1,1 @@
+export const MAX_SIG_FIGS = 3;

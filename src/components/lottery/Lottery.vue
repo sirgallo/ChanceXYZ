@@ -13,8 +13,6 @@
     titleIcon: 'Alt' | 'Stable';
   }
 
-  const MAX_SIG_FIGS = 3;
-
   const props = defineProps<DepositProps>();
   
   const walletStore = useWalletStore();
@@ -22,11 +20,8 @@
   const networkStore = useNetworkStore();
 
   const { lotteryToggleDeposit, xPos } = storeToRefs(featureStore);
-  const { balance } = storeToRefs(walletStore);
+  const { balance, stakeInPool, enqueuedDeposit, enqueuedWithdrawl } = storeToRefs(walletStore);
   const { cluster } = storeToRefs(networkStore);
-
-  const currencyDeposit: Ref<number> = ref(0);
-  const currencyWithdraw: Ref<number> = ref(0);
 
   const walletProvider = new WalletProvider(cluster.value);
 
@@ -39,9 +34,9 @@
   }
 
   async function depositIntoPoolClick() {
-    if (currencyDeposit.value === 0) return;
+    if (enqueuedDeposit.value === 0) return;
     
-    const newBalance = await walletProvider.depositIntoPool(currencyDeposit.value);
+    const newBalance = await walletProvider.depositIntoPool(enqueuedDeposit.value);
     walletStore.setBalance(newBalance);
   }
 
@@ -54,28 +49,11 @@
     walletStore.setBalance(newBalance);
   }
 
-  watch(currencyDeposit, async val => {
-    if (val) {
-      if (val > balance.value) {
-        currencyDeposit.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
-      } else if (val < 0) {
-        currencyDeposit.value = 0;
-      } else {
-        currencyDeposit.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
-      }
-    }
-  });
-
-  watch(currencyWithdraw, async val => {
-    if (val) {
-      if (val > balance.value) {
-        currencyWithdraw.value = parseFloat(balance.value.toFixed(MAX_SIG_FIGS));
-      } else if (val < 0) {
-        currencyWithdraw.value = 0;
-      } else {
-        currencyWithdraw.value = parseFloat(val.toFixed(MAX_SIG_FIGS));
-      }
-    }
+  walletStore.$subscribe( (mutation, state) => {
+    walletStore.setBalance(state.balance);
+    walletStore.setStakeInPool(state.stakeInPool);
+    walletStore.setEnqueuedDeposit(state.enqueuedDeposit);
+    walletStore.setEnqueuedWithdrawl(state.enqueuedWithdrawl);
   });
 </script>
 
@@ -98,16 +76,16 @@
     </div>
     <div v-if="lotteryToggleDeposit" class="wallet-stats">
        <Knob
-        v-model="currencyDeposit"
+        v-model="enqueuedDeposit"
         :min="0"
         :max="balance"
         :size="175"
-        :step="0.01"
+        :step="0.001"
+        :strokeWidth="6"
         valueColor="var(--c-green)" 
-        rangeColor="var(--color-background)"
-        :stroke="5">
+        rangeColor="var(--color-background)">
       </Knob>
-      <input class="input-box" type="number" v-model="currencyDeposit" placeholder=0 />
+      <input class="input-box" type="number" v-model="enqueuedDeposit" placeholder=0 />
       <div class="current-balance">
         <span>Wallet Balance: <b>{{ balance }}</b></span>
       </div>
@@ -118,17 +96,18 @@
     </div>
     <div v-else class="wallet-stats">
       <Knob
-        v-model="currencyWithdraw"
+        v-model="enqueuedWithdrawl"
         :min="0"
-        :max="balance"
+        :max="stakeInPool"
         :size="175"
-        :step="0.01"
+        :step="0.001"
+        :strokeWidth="6"
         valueColor="var(--c-orange)" 
         rangeColor="var(--color-background)">
       </Knob>
-      <input class="input-box" type="number" v-model="currencyWithdraw" placeholder=0 />
+      <input class="input-box" type="number" v-model="enqueuedWithdrawl" placeholder=0 />
       <div class="current-balance">
-        <span>Wallet Balance: <b>{{ balance }}</b></span>
+        <span>Pool Contribution: <b>{{ stakeInPool }}</b></span>
       </div>
       <div class="pool-actions">
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
