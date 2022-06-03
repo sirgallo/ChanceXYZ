@@ -4,18 +4,24 @@
   import { useWallet } from 'solana-wallets-vue';
   import { storeToRefs } from 'pinia';
 
-  import Wallet from '@app/components/wallet/Wallet.vue';
-
   import { useWalletStore } from '@stores/wallet';
+  import { useNetworkStore } from '@stores/network';
+
   import { WalletProvider } from '@providers/WalletProvider';
+  
   import { CLUSTER_URI } from '@app/configs/Cluster';
+
+  import Wallet from '@app/components/wallet/Wallet.vue';
   
   const { connected } = useWallet();
   
   const walletStore = useWalletStore();
-  const { balance, cluster } = storeToRefs(walletStore);
+  const networkStore = useNetworkStore();
 
-  const walletProvider = new WalletProvider(CLUSTER_URI);
+  const { balance } = storeToRefs(walletStore);
+  const { cluster } = storeToRefs(networkStore);
+
+  const walletProvider = new WalletProvider(cluster.value);
 
   const isDark = useDark();
   const toggleDark = useToggle(isDark);
@@ -23,6 +29,8 @@
   watch(connected, async val => {
     if (val) {
       const currBalance = await walletProvider.getBalance();
+      
+      networkStore.setNetwork(CLUSTER_URI);
       walletStore.setBalance(currBalance);
     }
   });

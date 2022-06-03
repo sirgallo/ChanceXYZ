@@ -1,24 +1,17 @@
 import { defineStore } from 'pinia';
 
-import type { Cluster } from '@solana/web3.js';
-
 export const useWalletStore = defineStore('balance', {
   state: () => ({
-    balance: 0,
-    cluster: 'devnet'
+    balance: 0
   }),
   getters: {
-    getBalance: (state: any) => state.balance,
-    getNetwork: (state: any) => state.cluster
+    getBalance: (state: any) => state.balance
   },
   actions: {
     setBalance(balance: number) {
       if (balance && balance !== this.balance) {
         this.balance = balance;
       }
-    },
-    setNetwork(network: Cluster) {
-      this.cluster = network
     }
   }
 });

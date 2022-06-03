@@ -1,11 +1,17 @@
 <script setup lang="ts"> 
   import { ref } from 'vue';
-  import { defaultHSLColor } from '@app/configs/Animation';
+  import { storeToRefs } from 'pinia';
+
+  import { useFeatureStore } from '@stores/feature';
+
+  const featureStore = useFeatureStore();
+
+  const { xPos } = storeToRefs(featureStore);
   
-  const x = ref(defaultHSLColor);
+  const x = xPos;
 
   function onMousemove(e) {
-    x.value = e.clientX;
+    featureStore.setXPos(e.clientX);
   }
 </script>
 

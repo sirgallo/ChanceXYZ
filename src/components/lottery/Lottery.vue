@@ -4,6 +4,7 @@
   
   import { useWalletStore } from '@stores/wallet';
   import { useFeatureStore } from '@stores/feature';
+  import { useNetworkStore } from '@stores/network';
 
   import { WalletProvider } from '@providers/WalletProvider';
   
@@ -19,27 +20,25 @@
   
   const walletStore = useWalletStore();
   const featureStore = useFeatureStore();
+  const networkStore = useNetworkStore();
 
-  walletStore.setNetwork(CLUSTER_URI);
+  const { lotteryToggleDeposit, xPos } = storeToRefs(featureStore);
+  const { balance } = storeToRefs(walletStore);
+  const { cluster } = storeToRefs(networkStore);
 
   const currencyDeposit = ref(0);
   const currencyWithdraw = ref(0);
-  const x = ref(defaultHSLColor);
-
-  const { lotteryToggleDeposit } = storeToRefs(featureStore);
-  const { balance, cluster } = storeToRefs(walletStore);
-
-  const isDeposit = ref(lotteryToggleDeposit.value);
+  const x = xPos;
+  const isDeposit = lotteryToggleDeposit;
 
   const walletProvider = new WalletProvider(cluster.value);
 
   function onMousemove(e) {
-    x.value = e.clientX;
+    featureStore.setXPos(e.clientX);
   }
 
   function toggleDeposit(truthy: boolean) {
-    isDeposit.value = truthy;
-    featureStore.setLotteryToggleDeposit(isDeposit.value);
+    featureStore.setLotteryToggleDeposit(truthy);
   }
 
   async function depositIntoPoolClick() {
