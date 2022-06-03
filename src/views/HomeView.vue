@@ -1,7 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
   import { storeToRefs } from 'pinia';
-
   import { useFeatureStore } from '@stores/feature';
 
   const featureStore = useFeatureStore();
