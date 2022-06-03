@@ -3,6 +3,8 @@
   import { storeToRefs } from 'pinia';
   
   import { useWalletStore } from '@stores/wallet';
+  import { useFeatureStore } from '@stores/feature';
+
   import { WalletProvider } from '@providers/WalletProvider';
   
   import { CLUSTER_URI } from '@app/configs/Cluster';
@@ -14,17 +16,20 @@
   }
 
   const props = defineProps<DepositProps>();
+  
   const walletStore = useWalletStore();
+  const featureStore = useFeatureStore();
 
   walletStore.setNetwork(CLUSTER_URI);
-
-  const isDeposit = ref(true)
 
   const currencyDeposit = ref(0);
   const currencyWithdraw = ref(0);
   const x = ref(defaultHSLColor);
 
+  const { lotteryToggleDeposit } = storeToRefs(featureStore);
   const { balance, cluster } = storeToRefs(walletStore);
+
+  const isDeposit = ref(lotteryToggleDeposit.value);
 
   const walletProvider = new WalletProvider(cluster.value);
 
@@ -34,6 +39,7 @@
 
   function toggleDeposit(truthy: boolean) {
     isDeposit.value = truthy;
+    featureStore.setLotteryToggleDeposit(isDeposit.value);
   }
 
   async function depositIntoPoolClick() {
