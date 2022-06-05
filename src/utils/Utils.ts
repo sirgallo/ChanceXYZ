@@ -3,4 +3,4 @@ export const toMs = {
   min: (min: number): number => min * 60000
 }
 
-export const sleep = async (timeout: number) => new Promise(res => setTimeout(res, timeout))
+export const sleep = async (timeout: number) => new Promise(res => setTimeout(res, timeout));

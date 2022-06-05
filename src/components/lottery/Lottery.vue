@@ -7,6 +7,7 @@
   import { useNetworkStore } from '@stores/network';
 
   import { WalletProvider } from '@providers/WalletProvider';
+  import { onMousemove } from '@utils/Animation';
 
   interface DepositProps {
     title: string;
@@ -24,10 +25,6 @@
   const { cluster } = storeToRefs(networkStore);
 
   const walletProvider = new WalletProvider(cluster.value);
-
-  function onMousemove(e) {
-    featureStore.setXPos(e.clientX);
-  }
 
   function toggleDeposit(truthy: boolean) {
     featureStore.setLotteryToggleDeposit(truthy);
@@ -111,7 +108,6 @@
       </div>
       <div class="pool-actions">
         <div class="button-element" @click="withdrawFundsClick()">Withdraw Funds</div>
-        <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
       </div>
     </div>
   </div>

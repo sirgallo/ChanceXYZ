@@ -1,14 +1,10 @@
 <script setup lang="ts"> 
   import { storeToRefs } from 'pinia';
   import { useFeatureStore } from '@stores/feature';
+  import { onMousemove } from '@utils/Animation';
 
   const featureStore = useFeatureStore();
-
   const { xPos } = storeToRefs(featureStore);
-
-  function onMousemove(e) {
-    featureStore.setXPos(e.clientX);
-  }
 </script>
 
 <template>

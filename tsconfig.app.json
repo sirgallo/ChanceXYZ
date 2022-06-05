@@ -10,6 +10,7 @@
       "@components/*": ["./src/components/*"],
       "@stores/*": ["./src/stores/*"],
       "@providers/*": ["./src/providers/*"],
+      "@utils/*": ["./src/utils/*"],
       "@views/*": ["./src/views/*"]
     }
   }
