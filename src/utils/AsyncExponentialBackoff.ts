@@ -6,20 +6,20 @@ export async function asyncExponentialBackoff(
   timeout: number, 
   reqFunction: Function, 
   request: any,
-  depth = 1): Promise<any> {
+  depth = 0): Promise<any> {
   try {
-    if (depth > retries) throw new Error(`Exceeded Max Retries: ${retries}`)
-    else return await reqFunction(endpoint, request)
+    if (depth > retries) throw new Error(`Exceeded Max Retries: ${retries}`);
+    else return await reqFunction(endpoint, request);
   } catch (err) {
-    if (depth > retries) throw err
+    if (depth > retries) throw err;
     else {
-      const newTimeout = 2 * depth * timeout
+      const newTimeout = 2 * depth * timeout;
 
-      console.log(`Moving to attempt: ${depth}`)
-      console.log(`Waiting for: ${newTimeout}`)
+      console.log(`Moving to attempt: ${depth}`);
+      console.log(`Waiting for: ${newTimeout}`);
 
-      await sleep(newTimeout)
-      return await asyncExponentialBackoff(endpoint, retries, timeout, reqFunction, request, depth + 1)
+      await sleep(newTimeout);
+      return await asyncExponentialBackoff(endpoint, retries, timeout, reqFunction, request, depth + 1);
     }
   }
 }

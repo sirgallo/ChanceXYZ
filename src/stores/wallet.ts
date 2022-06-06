@@ -1,13 +1,19 @@
 import { defineStore } from 'pinia';
 
-import { MAX_SIG_FIGS } from '@app/configs/SigFigs';
+import { 
+  checkExistsAndNew, 
+  withinRange,
+  cleanValue 
+} from '@utils/StateValidation';
 
 export const useWalletStore = defineStore('balance', {
   state: () => ({
     balance: 0,
     stakeInPool: 0,
     enqueuedDeposit: 0,
-    enqueuedWithdrawl: 0
+    enqueuedWithdrawl: 0,
+    displayCleanDeposit: 0,
+    displayCleanWithdrawl: 0
   }),
   getters: {
     getBalance: (state: any) => state.balance,
@@ -17,37 +23,24 @@ export const useWalletStore = defineStore('balance', {
   },
   actions: {
     setBalance(balance: number) {
-      if (balance && balance !== this.balance) {
-        this.balance = balance;
-      }
+     this.balance = checkExistsAndNew(balance, this.balance);
     },
     setStakeInPool(stake: number) {
-      if (stake && stake !== this.stakeInPool) {
-        this.stakeInPool = stake;
-      }
+      this.stakeInPool = checkExistsAndNew(stake, this.stakeInPool);
     },
     setEnqueuedDeposit(deposit: number) {
-      this.enqueuedDeposit = this.cleanValue(deposit, 'Deposit');
+      this.enqueuedDeposit = checkExistsAndNew(withinRange(deposit, this.balance), this.enqueuedDeposit);
+      this.setCleanDeposit();
     },
     setEnqueuedWithdrawl(withdraw: number) {
-      this.enqueuedWithdrawl = this.cleanValue(withdraw, 'Withdrawl');
+      this.enqueuedWithdrawl = checkExistsAndNew(withinRange(withdraw, this.stakeInPool), this.enqueuedWithdrawl);
+      this.setCleanWithdrawl();
     },
-    cleanValue(val: number, type: 'Deposit' | 'Withdrawl') {
-      if (val) {
-        if (val > this.balance && type === 'Deposit') {
-          val = parseFloat(this.balance.toFixed(MAX_SIG_FIGS));
-        } else if (val > this.stakeInPool && type === 'Withdrawl') {
-          val = parseFloat(this.stakeInPool.toFixed(MAX_SIG_FIGS));
-        } else if (val < 0) {
-          val = 0;
-        } else {
-          val = parseFloat(val.toFixed(MAX_SIG_FIGS));
-        }
-        
-        return val;
-      } else {
-        return 0;
-      }
+    setCleanDeposit() {
+      this.displayCleanDeposit = cleanValue(this.enqueuedDeposit);
+    },
+    setCleanWithdrawl() {
+      this.displayCleanWithdrawl = cleanValue(this.enqueuedWithdrawl);
     }
   }
 });

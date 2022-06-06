@@ -1,5 +1,5 @@
 import type { PerformanceMetricsResponse } from "@app/models/PerformanceMetrics";
-import { asyncExponentialBackoff } from '@app/utils/AsyncExponentialBackoff';
+import { asyncExponentialBackoff } from '@utils/AsyncExponentialBackoff';
 
 export class StatisticsProvider {
   constructor() {}

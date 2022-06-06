@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia';
+
+import { checkExistsAndNew } from '@utils/StateValidation';
 import { defaultHSLColor } from '@app/configs/Animation';
 
 export const useFeatureStore = defineStore('feature', {
@@ -12,14 +14,10 @@ export const useFeatureStore = defineStore('feature', {
   },
   actions: {
     setLotteryToggleDeposit(truthy: boolean) {
-      if (truthy !== this.lotteryToggleDeposit) {
-        this.lotteryToggleDeposit = truthy;
-      }
+      this.lotteryToggleDeposit = checkExistsAndNew(truthy, this.lotteryToggleDeposit);
     },
     setXPos(val: number) {
-      if (val !== this.xPos) {
-        this.xPos = val;
-      }
+      this.xPos = checkExistsAndNew(val, this.xPos);
     }
   }
 });

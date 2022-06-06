@@ -8,6 +8,7 @@
 
   import { WalletProvider } from '@providers/WalletProvider';
   import { onMousemove } from '@utils/Animation';
+  import { cleanValue } from '@utils/StateValidation';
 
   interface DepositProps {
     title: string;
@@ -21,14 +22,12 @@
   const networkStore = useNetworkStore();
 
   const { lotteryToggleDeposit, xPos } = storeToRefs(featureStore);
-  const { balance, stakeInPool, enqueuedDeposit, enqueuedWithdrawl } = storeToRefs(walletStore);
+  const { 
+    balance, stakeInPool, enqueuedDeposit, enqueuedWithdrawl, 
+    displayCleanDeposit, displayCleanWithdrawl } = storeToRefs(walletStore);
   const { cluster } = storeToRefs(networkStore);
 
   const walletProvider = new WalletProvider(cluster.value);
-
-  function toggleDeposit(truthy: boolean) {
-    featureStore.setLotteryToggleDeposit(truthy);
-  }
 
   async function depositIntoPoolClick() {
     if (enqueuedDeposit.value === 0) return;
@@ -47,8 +46,6 @@
   }
 
   walletStore.$subscribe( (mutation, state) => {
-    walletStore.setBalance(state.balance);
-    walletStore.setStakeInPool(state.stakeInPool);
     walletStore.setEnqueuedDeposit(state.enqueuedDeposit);
     walletStore.setEnqueuedWithdrawl(state.enqueuedWithdrawl);
   });
@@ -68,16 +65,15 @@
       </div>
     </div>
     <div class="toggle-buttons">
-      <div class="toggle-button-element" @click="toggleDeposit(true)">Deposit</div>
-      <div class="toggle-button-element" @click="toggleDeposit(false)">Withdraw</div>
+      <div class="toggle-button-element" @click="featureStore.setLotteryToggleDeposit(true)">Deposit</div>
+      <div class="toggle-button-element" @click="featureStore.setLotteryToggleDeposit(false)">Withdraw</div>
     </div>
     <div v-if="lotteryToggleDeposit" class="wallet-stats">
        <Knob
-        v-model="enqueuedDeposit"
+        v-model="displayCleanDeposit"
         :min="0"
         :max="balance"
-        :size="175"
-        :step="0.001"
+        :size="125"
         :strokeWidth="6"
         valueColor="var(--c-green)" 
         rangeColor="var(--color-background)">
@@ -88,16 +84,15 @@
       </div>
       <div class="pool-actions">
         <div class="button-element" @click="depositIntoPoolClick()">Deposit Funds</div>
-        <div class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
+        <div v-if="cluster !== 'mainnet-beta'" class="button-element" @click="devRequestAirdropClick()">Request Airdrop</div>
       </div>
     </div>
     <div v-else class="wallet-stats">
       <Knob
-        v-model="enqueuedWithdrawl"
+        v-model="displayCleanWithdrawl"
         :min="0"
         :max="stakeInPool"
-        :size="175"
-        :step="0.001"
+        :size="125"
         :strokeWidth="6"
         valueColor="var(--c-orange)" 
         rangeColor="var(--color-background)">
