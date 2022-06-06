@@ -27,7 +27,9 @@
 
 <template>
   <div class="network-stats-container">
-    <div class="network-stats-layer-base"></div>
+    <div class="network-stats-layer-base">
+      <h4 v-if="!stable"><b>Network Instability</b></h4>
+    </div>
     <div class="network-stats-layer-top">
       <h4 v-if="stable">Current TPS: {{ tps }} <i class="fa-solid fa-circle blinker-okay"> | <b>{{ cluster.toUpperCase() }}</b></i></h4>
       <h4 v-else>Current TPS: {{ tps }} <i class="fa-solid fa-circle blinker-warn"></i> | <b>{{ cluster.toUpperCase() }}</b></h4>
