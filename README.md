@@ -1,7 +1,7 @@
 # Chance Lottery
 
-## Focus --> frontend
-##  --- TypeScript + Vue
+## Focus --> App
+`--- TypeScript + Vue + Solana Web3.js`
 
 
 ## What is it?
