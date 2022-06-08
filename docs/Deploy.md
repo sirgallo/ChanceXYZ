@@ -38,5 +38,9 @@ Tested with free tier t2.micro
   ...
 
   docker build -f <path to dockerfile> -t <image name> .  
-  docker run <image name> -p <port>
+  docker run --network host <service> 
+  
+  or
+
+  docker run --network host -p <host port:container port> <service>
 ```
