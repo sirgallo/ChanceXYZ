@@ -1,21 +1,58 @@
 version: "3"
 services:
-  chance:
-    image: chance_img
-    container_name: chance_inst
+  chance1:
+    image: chance_app_img
+    container_name: chance_app_inst_1
     build:
       context: ./
-    ports:
-      - '3456:3456'
+      dockerfile: ./src/Dockerfile
+    expose: 
+      - '3456'
     environment:
       - NODE_ENV=docker
       - NODE_OPTIONS="--max-old-space-size=4096"
     volumes:
-      - chancedata:/usr/chance/data
+      - chance1data:/usr/chance/data
     networks:
-      - chancenetwork
+      chance_app_network:
+        aliases:
+          - chance1_app
+  chance2:
+    image: chance_app_img
+    container_name: chance_app_inst_2
+    build:
+      context: ./
+      dockerfile: ./src/Dockerfile
+    expose: 
+      - '3456'
+    environment:
+      - NODE_ENV=docker
+      - NODE_OPTIONS="--max-old-space-size=4096"
+    volumes:
+      - chance2data:/usr/chance/data
+    networks:
+      chance_app_network:
+        aliases:
+          - chance2_app
+  haproxy:
+    image: chance_haproxy_img
+    container_name: chance_haproxy_inst
+    build:
+      context: ./
+      dockerfile: ./haproxy/Dockerfile
+    ports: 
+      - '80:80'
+    networks:
+      - chance_lb_network
+      - chance_app_network
+    depends_on:
+      - chance1
+      - chance2
 networks:
-  chancenetwork:
+  chance_lb_network:
+    driver: bridge
+  chance_app_network:
     driver: bridge
 volumes:
-  chancedata:
+  chance1data:
+  chance2data:
