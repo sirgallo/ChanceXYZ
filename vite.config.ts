@@ -1,14 +1,17 @@
-import { fileURLToPath, URL } from 'url'
+import { fileURLToPath, URL } from 'url';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+
+import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
+      buffer: 'rollup-plugin-node-polyfills/polyfills/buffer-es6', 
       '@app': fileURLToPath(new URL('./src', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
       '@stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
@@ -16,6 +19,13 @@ export default defineConfig({
       '@providers': fileURLToPath(new URL('./src/providers', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
       '@views': fileURLToPath(new URL('./src/views', import.meta.url))
+    }
+  },
+  build: {
+    rollupOptions: {
+      plugins: [
+        rollupNodePolyFill()
+      ]
     }
   }
 })
