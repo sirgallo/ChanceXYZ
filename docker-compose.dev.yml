@@ -1,0 +1,21 @@
+version: "3"
+services:
+  chance:
+    image: chance_img
+    container_name: chance_inst
+    build:
+      context: ./
+    ports:
+      - '3456:3456'
+    environment:
+      - NODE_ENV=docker
+      - NODE_OPTIONS="--max-old-space-size=4096"
+    volumes:
+      - chancedata:/usr/chance/data
+    networks:
+      - chancenetwork
+networks:
+  chancenetwork:
+    driver: bridge
+volumes:
+  chancedata:
