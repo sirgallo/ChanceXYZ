@@ -12,9 +12,6 @@ export function withinRange(val: any, compareVal: number) {
 }
 
 export function cleanValue(val: number): number { 
-  if (val) {
-    return parseFloat(val.toFixed(MAX_SIG_FIGS));
-  } else {
-    return 0;
-  }
+  if (val) return parseFloat(val.toFixed(MAX_SIG_FIGS));
+  else return 0;
 }
