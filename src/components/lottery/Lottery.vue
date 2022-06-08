@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { ref, Ref, watch } from 'vue';
   import { storeToRefs } from 'pinia';
   
   import { useWalletStore } from '@stores/wallet';
@@ -7,8 +6,6 @@
   import { useNetworkStore } from '@stores/network';
 
   import { WalletProvider } from '@providers/WalletProvider';
-  import { onMousemove } from '@utils/Animation';
-  import { cleanValue } from '@utils/StateValidation';
 
   interface DepositProps {
     title: string;
@@ -21,7 +18,7 @@
   const featureStore = useFeatureStore();
   const networkStore = useNetworkStore();
 
-  const { lotteryToggleDeposit, xPos } = storeToRefs(featureStore);
+  const { lotteryToggleDeposit } = storeToRefs(featureStore);
   const { 
     balance, stakeInPool, enqueuedDeposit, enqueuedWithdrawl, 
     displayCleanDeposit, displayCleanWithdrawl } = storeToRefs(walletStore);
@@ -53,17 +50,6 @@
 
 <template>
   <div class="lottery-container">
-    <div class="lottery-title">
-      <h2 
-        @mousemove="onMousemove"
-        :style="{ color: `hsl(${xPos}, 55%, 65%)` }"
-        class="color-change">
-        {{ title }}
-      </h2>
-      <div class="lottery-title-icon">
-        <i v-if="titleIcon === 'Stable'" class="fa-lg fa-solid fa-money-bill-wave dollar-color">{{ xPos }}</i>
-      </div>
-    </div>
     <div class="toggle-buttons">
       <div class="toggle-button-element" @click="featureStore.setLotteryToggleDeposit(true)">Deposit</div>
       <div class="toggle-button-element" @click="featureStore.setLotteryToggleDeposit(false)">Withdraw</div>

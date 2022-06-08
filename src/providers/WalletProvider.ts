@@ -5,6 +5,8 @@ import {
   SystemProgram, PublicKey
 } from '@solana/web3.js';
 
+import { DEV_PROGRAM_ID } from '@app/configs/Program';
+
 export class WalletProvider {
   private connection: Connection;
   constructor(cluster: Cluster) {
@@ -25,7 +27,7 @@ export class WalletProvider {
     const transaction = new Transaction().add(
       SystemProgram.transfer({
         fromPubkey: publicKey.value,
-        toPubkey: Keypair.generate().publicKey,
+        toPubkey: new PublicKey(DEV_PROGRAM_ID),
         lamports: depositAmount * LAMPORTS_PER_SOL
       })
     );

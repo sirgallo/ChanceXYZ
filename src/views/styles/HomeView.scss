@@ -3,3 +3,13 @@
 .home-container {
   @extend .v-container;
 }
+
+.home-title {
+  background-color: var(--color-background-soft);
+  padding: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  border: 0px solid transparent;
+  box-shadow: 0px 6px 3px -3px var(--color-brand-title);
+}
