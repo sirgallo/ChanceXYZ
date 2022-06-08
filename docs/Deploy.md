@@ -8,3 +8,9 @@
 ##  Nginx.conf
 
   ===> modify this to change nginx configuration
+
+## Run Docker Locally
+
+```
+  docker-compose -f docker-compose.dev.yml up --build
+```
