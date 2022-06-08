@@ -39,9 +39,10 @@ services:
     container_name: chance_haproxy_inst
     build:
       context: ./
-      dockerfile: ./haproxy/Dockerfile
+      dockerfile: ./haproxy/Dockerfile.dev
     ports: 
       - '80:80'
+      - '443:443'
     networks:
       - chance_lb_network
       - chance_app_network

@@ -14,3 +14,29 @@
 ```
   docker-compose -f docker-compose.dev.yml up --build
 ```
+
+## Host on EC2
+
+Tested with free tier t2.micro
+
+```
+  ssh -i <keypair> ec2-user@<public-domain>
+
+  ...
+
+  sudo yum update -y
+  sudo yum install docker -y
+  sudo service docker start
+  sudo usermod -a -G docker ec2-user
+  docker -v
+
+  ...
+
+  npm run build:<service>
+  rsync -avP -e "ssh -i <keypair>" <service> ec2-user@<public-domain>
+
+  ...
+
+  docker build -f <path to dockerfile> -t <image name> .  
+  docker run <image name> -p <port>
+```
