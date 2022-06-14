@@ -6,8 +6,6 @@ services:
     build:
       context: ./
       dockerfile: ./src/Dockerfile.dev
-    expose: 
-      - '3456'
     ports:
       - '3456:3456'
     environment:
