@@ -4,14 +4,14 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
-import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
+import NodeModulesPolyfills from '@esbuild-plugins/node-modules-polyfill';
+import GlobalsPolyfills from '@esbuild-plugins/node-globals-polyfill';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      buffer: 'rollup-plugin-node-polyfills/polyfills/buffer-es6', 
       '@app': fileURLToPath(new URL('./src', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
       '@stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
@@ -21,10 +21,21 @@ export default defineConfig({
       '@views': fileURLToPath(new URL('./src/views', import.meta.url))
     }
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: 'globalThis'
+      }
+    }
+  },
   build: {
     rollupOptions: {
       plugins: [
-        rollupNodePolyFill()
+        NodeModulesPolyfills(),
+        GlobalsPolyfills({
+          buffer: true,
+          process: true
+        })
       ]
     }
   }

@@ -9,10 +9,16 @@
 
   ===> modify this to change nginx configuration
 
+## Run Docker with single instance and nginx (Prod build)
+
+```
+  docker-compose -f docker-compose.nginx.dev.yml up --build
+```
+
 ## Run Docker Locally
 
 ```
-  docker-compose -f docker-compose.dev.yml up --build
+  docker-compose -f docker-compose.haproxy.dev.yml up --build
 ```
 
 ## Host on EC2

@@ -1,4 +1,4 @@
-import type { PerformanceMetricsResponse } from "@app/models/PerformanceMetrics";
+import type { PerformanceMetricsResponse } from "@models/PerformanceMetrics";
 import { asyncExponentialBackoff } from '@utils/AsyncExponentialBackoff';
 
 export class StatisticsProvider {
@@ -20,7 +20,8 @@ export class StatisticsProvider {
       body: JSON.stringify(body)
     }
 
-    const resp = await asyncExponentialBackoff(network, 5, 500, fetch, postRequest);
+    const resp = await fetch(network, postRequest);
+    //const resp = await asyncExponentialBackoff(network, 5, 500, fetch, postRequest);
     return resp.json();
   }
 }

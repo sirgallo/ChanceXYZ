@@ -5,9 +5,11 @@ services:
     container_name: chance_app_inst_1
     build:
       context: ./
-      dockerfile: ./src/Dockerfile
+      dockerfile: ./src/Dockerfile.dev
     expose: 
       - '3456'
+    ports:
+      - '3456:3456'
     environment:
       - NODE_ENV=docker
       - NODE_OPTIONS="--max-old-space-size=4096"
@@ -17,23 +19,6 @@ services:
       chance_app_network:
         aliases:
           - chance1_app
-  chance2:
-    image: chance_app_img
-    container_name: chance_app_inst_2
-    build:
-      context: ./
-      dockerfile: ./src/Dockerfile
-    expose: 
-      - '3456'
-    environment:
-      - NODE_ENV=docker
-      - NODE_OPTIONS="--max-old-space-size=4096"
-    volumes:
-      - chance2data:/usr/chance/data
-    networks:
-      chance_app_network:
-        aliases:
-          - chance2_app
   haproxy:
     image: chance_haproxy_img
     container_name: chance_haproxy_inst
@@ -48,7 +33,6 @@ services:
       - chance_app_network
     depends_on:
       - chance1
-      - chance2
 networks:
   chance_lb_network:
     driver: bridge

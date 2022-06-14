@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import type { Cluster } from '@solana/web3.js';
 
 import { StatisticsProvider } from '@providers/StatisticsProvider';
-import type { PerformanceMetricsResponse } from '@models/PerformaceMetrics';
+import type { PerformanceMetricsResponse } from '@models/PerformanceMetrics';
 import { checkExistsAndNew } from '@utils/StateValidation';
 
 export const useNetworkStore = defineStore('network', {
@@ -21,10 +21,10 @@ export const useNetworkStore = defineStore('network', {
     async setPerformanceMetrics() {
       const statsProvider = new StatisticsProvider();
       const apiEndpoint = this.cluster === 'devnet' 
-        ? 'https://api.devnet.solana.com'
+        ? 'https://api.devnet.solana.com/'
         : this.cluster === 'mainnet-beta'
-        ? 'https://api.mainnet-beta.solana.com'
-        : 'https://api.testnet.solana.com';
+        ? 'https://api.mainnet-beta.solana.com/'
+        : 'https://api.testnet.solana.com/';
       
       const resp: PerformanceMetricsResponse = await statsProvider.getRecentPerformanceSamples(apiEndpoint);
 
