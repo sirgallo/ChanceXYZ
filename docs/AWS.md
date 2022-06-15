@@ -6,7 +6,7 @@
 
   VPCs are created in a specific region and can have 
 
-  In AWS VPC Console --> 
+  `In AWS VPC Console -->` 
     Create a VPC with an assigned cidr group (assigning private ip address range to systems), say `IPv4 10.0.0.0/16`. The prefix assigns the base IP, so `10.0.x.x` and has a range from `10.0.0.0-10.0.255.255`. The `16` represents the subnet mask, which in this case spans the last two zeros of the ip prefix, leading to a total of `65,536` options.
 
 ## Subnets
