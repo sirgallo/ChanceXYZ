@@ -10,7 +10,7 @@
 <a href="https://minikube.sigs.k8s.io/docs/start/">https://minikube.sigs.k8s.io/docs/start/</a>
 
 
-## Tagging a Docker Image for Kubernetes Deployment
+## Tagging a Docker Image (General Syntax)
 
 ```bash
   docker build -f <docker-compose-file> -t <image-tag-from-docker-compose-file> <source-path>
@@ -165,4 +165,21 @@ for each kubernetes.yaml file, minus service file
 
 ```bash
   kubectl delete svc <service-name>
+```
+
+## Replace a Service
+
+```bash
+  kubectl replace -f <service-deployment-yaml>
+```
+
+## Add Replica Sets
+
+In the <service-name>-deployment.yaml file, add this field to the ruleset:
+
+```yaml
+...
+rules:
+  replicas: <n-number-of-replicas>
+...
 ```

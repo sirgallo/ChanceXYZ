@@ -1,3 +1,0 @@
-FROM haproxy:latest
-
-COPY ./configs/haproxy.prod.cfg /usr/local/etc/haproxy/haproxy.cfg
