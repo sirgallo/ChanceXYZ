@@ -1,12 +1,17 @@
-# Chance Lottery
+# ChanceXYZ
+
 
 ## Focus --> App
 `--- TypeScript + Vue + Solana Web3.js`
+
+## Focus --> Systems/RPC
+`--- TypeScript + Rust + Express + Anchor Framework`
 
 
 ## What is it?
 
 Chance is a refundable lottery running on the `SOLANA` blockchain. This document covers the overall user flow between `SOLANA` programs and what happens once funds are deposited into the `LP`.
+
 
 ## Diagram
 
@@ -22,6 +27,7 @@ Frontend
   |===> |____________________| ===>        ===>          ===>  |____________________|
 
 ```
+
 
 ## Overview
 
@@ -41,6 +47,7 @@ Frontend
       --> users have option to withdraw or keep funds in after win/loss
 ```
 
+
 ##  Determine Highest Performing Volt?
 
 Currently only running cash secured puts using `usdc`.
@@ -59,6 +66,7 @@ Currently only running cash secured puts using `usdc`.
 
 ```
 
+
 ## Determine Winner
 ```
   fractionOfParticipants as fopart = 1 / number of participants
@@ -76,6 +84,7 @@ Currently only running cash secured puts using `usdc`.
 
 `d` should be weighted much more heavily than `y` and `e`, with `e` having the overall lowest weight to make the system more democratic. `e` should be an order smaller than `y` since revolving pool contributors earn a small fraction of the premium generated, thus increasing their size and overall chance of winning the pot.
 
+
 ##  How Premium is distributed
 
 `20%` deposit back into LP --> this will allow the pool to grow over time and return higher rewards. Will also act as a treasury
@@ -86,9 +95,11 @@ Currently only running cash secured puts using `usdc`.
 
 `60%` distributed to winner
 
+
 ## Performance Fee
 
 A `2%` performance fee is deducted on every transaction, which is distributed amongst devs and the treasury. This is due to the fact that Chance is offering a service to users, with the opportunity to not only win the lottery, but generate a small interest on pool contributions.
+
 
 ##  How pool is handled
 
