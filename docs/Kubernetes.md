@@ -97,8 +97,6 @@ Create a <name>-ingress.yaml file, like below:
   kind: Ingress
   metadata:
     name: <name>-ingress
-    annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /$1
   spec:
     tls:
       - hosts:
