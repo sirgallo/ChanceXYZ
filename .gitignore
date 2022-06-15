@@ -27,9 +27,9 @@ app/*.njsproj
 app/*.sln
 app/*.sw?
 
-systems/.anchor
-systems/.DS_Store
-systems/target
-systems/**/*.rs.bk
-systems/node_modules
-systems/test-ledger
+dapp/.anchor
+dapp/.DS_Store
+dapp/target
+dapp/**/*.rs.bk
+dapp/node_modules
+dapp/test-ledger
