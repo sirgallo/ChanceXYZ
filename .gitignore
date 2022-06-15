@@ -1,4 +1,3 @@
-# Logs
 app/logs
 app/*.log
 app/npm-debug.log*
@@ -14,10 +13,9 @@ app/dist-ssr
 app/coverage
 app/*.local
 
-app/cypress/videos/
-app/cypress/screenshots/
+app/cypress/videos
+app/cypress/screenshots
 
-# Editor directories and files
 app/.vscode/*
 app/!.vscode/extensions.json
 app/.idea
@@ -33,3 +31,7 @@ dapp/target
 dapp/**/*.rs.bk
 dapp/node_modules
 dapp/test-ledger
+
+dapp/systems/backend/node_modules
+dapp/systems/backend/dist
+dapp/systems/backend/.tscache
