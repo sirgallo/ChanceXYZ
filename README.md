@@ -6,8 +6,7 @@
 
 ## What is it?
 
-Chance is a refundable lottery running on the Solana blockchain. This document covers the overall user flow between 
-Solana programs and what happens once funds are deposited into the LP.
+Chance is a refundable lottery running on the `SOLANA` blockchain. This document covers the overall user flow between `SOLANA` programs and what happens once funds are deposited into the `LP`.
 
 ## Diagram
 
@@ -45,7 +44,7 @@ Frontend
 ##  Determine Highest Performing Volt?
 
 Currently only running cash secured puts using `usdc`
-Why? --> The underlying asset is stable 
+`Why?` --> The underlying asset is stable 
 
 ```
   Selected Volt = Highest average premium over 4 EPOCHS
@@ -74,20 +73,24 @@ Why? --> The underlying asset is stable
   e = epsilon weight
 ```
 
-`d` should be weighted much more heavily than `y` and `e`, with `e` having the overall lowest weight to make the system
-more democratic
+`d` should be weighted much more heavily than `y` and `e`, with `e` having the overall lowest weight to make the system more democratic. `e` should be an order smaller than `y` since revolving pool contributors earn a small fraction of the premium generated, thus increasing their size and overall chance of winning the pot.
 
 ##  How Premium is distributed
 
-`5%` performance fee --> distributed to contributors
 `20%` deposit back into LP --> this will allow the pool to grow over time and return higher rewards. Will also act as a treasury
 
 `--> as treasury increases, so does collateral so risk is lowered`
 
-`75%` distributed to winner/winners
+`20%` distributed to revolving pool contributors. This increases individual stake in the pool, if stake is not withdrawn, after each EPOCH. This incentivizes users to keep contributions in the pool, since a larger stake correlates to a higher chance of winning the jackpot and users earn a small interest. This also helps the overall pool growth/pool retention.
+
+`60%` distributed to winner
+
+## Performance Fee
+
+A `2%` performance fee is deducted on every transaction, which is distributed amongst devs and the treasury. This is due to the fact that Chance is offering a service to users, with the opportunity to not only win the lottery, but generate a small interest on pool contributions.
 
 ##  How pool is handled
 
-Because the premium is the lottery pot, and all performance/treasury fees are covered by the premium, users will be returned the full amount they deposited unless the pool suffers losses due to risks associated with covered puts, including the underlying asset dropping below the strike price. 
+Because the premium is the lottery pot, users will be returned the full amount they deposited + interest accrued, minus performance fees, unless the pool suffers losses due to risks associated with covered puts, including the underlying asset dropping below the strike price. 
 
-Users also need to pay for gas fees, but SOLANA offers minimal/almost zero gas fees so this can be ignored.
+Users also need to pay for gas fees, but the `SOLANA` network offers minimal/almost zero `gas` fees so this can be ignored.
