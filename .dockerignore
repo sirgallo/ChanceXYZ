@@ -3,3 +3,5 @@
 
 /dapp/node_modules
 /dapp/npm-debug.log
+
+/docs

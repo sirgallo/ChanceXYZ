@@ -36,4 +36,6 @@ dapp/systems/backend/node_modules
 dapp/systems/backend/dist
 dapp/systems/backend/.tscache
 
-certs/*
+certs/*.crt
+certs/*.key
+certs/*.pem
