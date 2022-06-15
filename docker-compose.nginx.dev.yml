@@ -4,7 +4,7 @@ services:
     image: chance_app_img
     container_name: chance_app_inst
     build:
-      context: ./
+      context: ./app
       dockerfile: ./src/Dockerfile.dev
     ports:
       - '3456:3456'

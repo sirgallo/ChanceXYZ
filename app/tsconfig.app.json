@@ -1,0 +1,18 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["app/env.d.ts", "app/src/**/*", "app/src/**/*.vue"],
+  "exclude": ["app/src/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["app/src/*"],
+      "@components/*": ["app/src/components/*"],
+      "@stores/*": ["app/src/stores/*"],
+      "@models/*": ["app/src/models/*"],
+      "@providers/*": ["app/src/providers/*"],
+      "@utils/*": ["app/src/utils/*"],
+      "@views/*": ["app/src/views/*"]
+    }
+  }
+}
