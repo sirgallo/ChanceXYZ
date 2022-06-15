@@ -19,13 +19,8 @@
   docker-compose -f docker-compose.nginx.dev.yml up --build
 ```
 
-## Run Docker Locally
 
-```
-  docker-compose -f docker-compose.haproxy.dev.yml up --build
-```
-
-## Host on EC2
+## Host on EC2 with HAPROXY
 
 Tested with free tier t2.micro
 
