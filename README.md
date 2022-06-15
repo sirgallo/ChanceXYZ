@@ -45,7 +45,7 @@ Frontend
 
 Currently only running cash secured puts using `usdc`.
 
-`Why?` --> The underlying asset is stable 
+`Why? -->` **The underlying asset is stable** 
 
 ```
   Selected Volt = Highest average premium over 4 EPOCHS
@@ -80,7 +80,7 @@ Currently only running cash secured puts using `usdc`.
 
 `20%` deposit back into LP --> this will allow the pool to grow over time and return higher rewards. Will also act as a treasury
 
-`--> as treasury increases, so does collateral so risk is lowered`
+`NOTE -->` **as treasury increases, so does collateral so risk is lowered**
 
 `20%` distributed to revolving pool contributors. This increases individual stake in the pool, if stake is not withdrawn, after each EPOCH. This incentivizes users to keep contributions in the pool, since a larger stake correlates to a higher chance of winning the jackpot and users earn a small interest. This also helps the overall pool growth/pool retention.
 
