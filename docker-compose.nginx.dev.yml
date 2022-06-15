@@ -7,7 +7,7 @@ services:
       context: ./app
       dockerfile: ./Dockerfile.dev
     ports:
-      - '3456:3456'
+      - '80:80'
     environment:
       - NODE_ENV=docker
       - NODE_OPTIONS="--max-old-space-size=4096"

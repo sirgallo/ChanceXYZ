@@ -7,7 +7,7 @@ services:
       context: ./app
       dockerfile: ./src/Dockerfile.dev
     expose: 
-      - '3456'
+      - '80'
     environment:
       - NODE_ENV=docker
       - NODE_OPTIONS="--max-old-space-size=4096"
@@ -24,7 +24,7 @@ services:
       context: ./app
       dockerfile: ./src/Dockerfile.dev
     expose: 
-      - '3456'
+      - '80'
     environment:
       - NODE_ENV=docker
       - NODE_OPTIONS="--max-old-space-size=4096"
