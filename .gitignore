@@ -35,3 +35,5 @@ dapp/test-ledger
 dapp/systems/backend/node_modules
 dapp/systems/backend/dist
 dapp/systems/backend/.tscache
+
+certs/*
