@@ -143,11 +143,13 @@ for each kubernetes.yaml file, minus service file
   kubectl expose deployment <deployment-name> --type=NodePort --port=<port-of-pods-to-expose> --name=<name-of-service>   // only if replication controller is not used
 ```
 
+
 ## List Pods
 
 ```bash
   kubectl get pods -A
 ```
+
 
 ## Get a Service
 
@@ -155,11 +157,13 @@ for each kubernetes.yaml file, minus service file
   kubectl get services <service-name>
 ```
 
+
 ## Get Service URL
 
 ```bash
   minikube service <service-name> --url
 ```
+
 
 ## Delete a Service
 
@@ -167,11 +171,13 @@ for each kubernetes.yaml file, minus service file
   kubectl delete svc <service-name>
 ```
 
+
 ## Replace a Service
 
 ```bash
   kubectl replace -f <service-deployment-yaml>
 ```
+
 
 ## Basic Replica Sets
 
@@ -183,6 +189,7 @@ rules:
   replicas: <n-number-of-replicas>
 ...
 ```
+
 
 ## Replication Controller (Recommended over replica sets)
 
