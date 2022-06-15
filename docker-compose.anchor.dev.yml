@@ -1,7 +1,8 @@
 version: "3"
 services:
   anchor:
-    image: dev_anchor_img
+    image: dev-anchor-img
+    container_name: dev-anchor-inst
     build:
       context: ./dapp/systems
       dockerfile: ./backend/anchor/Dockerfile
@@ -13,8 +14,7 @@ services:
     volumes:
       - anchordata:/usr/src/data
     networks:
-      dev_app_layer:
-      dev_api_layer:
+      dev-api-layer:
     restart: always
     healthcheck:
       test: curl --fail http://localhost:5680/poll || kill 1
@@ -22,9 +22,7 @@ services:
       timeout: 10s
       retries: 3
 networks:
-  dev_app_layer:
-    driver: bridge
-  dev_api_layer:
+  dev-api-layer:
     driver: bridge
 volumes:
   anchordata:
