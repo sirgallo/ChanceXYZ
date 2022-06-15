@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.nginx.dev.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: chance
+  name: chance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: chance
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.nginx.dev.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/chance-app-network: "true"
+        io.kompose.service: chance
+    spec:
+      containers:
+        - env:
+            - name: NODE_ENV
+              value: docker
+            - name: NODE_OPTIONS
+              value: '"--max-old-space-size=4096"'
+          image: chance-app-img
+          imagePullPolicy: Never
+          name: chance-app-inst
+          ports:
+            - containerPort: 3456
+          resources: {}
+          volumeMounts:
+            - mountPath: /usr/chance/data
+              name: chancedata
+      restartPolicy: Always
+      volumes:
+        - name: chancedata
+          persistentVolumeClaim:
+            claimName: chancedata
+status: {}

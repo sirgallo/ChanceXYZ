@@ -1,11 +1,11 @@
 version: "3"
 services:
   chance:
-    image: chance_app_img
-    container_name: chance_app_inst
+    image: chance-app-img
+    container_name: chance-app-inst
     build:
       context: ./app
-      dockerfile: ./src/Dockerfile.dev
+      dockerfile: ./Dockerfile.dev
     ports:
       - '3456:3456'
     environment:
@@ -14,11 +14,11 @@ services:
     volumes:
       - chancedata:/usr/chance/data
     networks:
-      chance_app_network:
+      chance-app-network:
         aliases:
-          - chance_app
+          - chance-app
 networks:
-  chance_app_network:
+  chance-app-network:
     driver: bridge
 volumes:
   chancedata:
