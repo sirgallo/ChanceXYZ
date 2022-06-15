@@ -90,7 +90,7 @@ Review with
   kubectl get secret <secret-name> -o yaml
 ```
 
-Create a <name>-ingress.yaml file, like below:
+Create a *-ingress.yaml file, like below:
 
 ```yaml
   apiVersion: <api-version>
@@ -130,7 +130,7 @@ Verify
 
 ## Deploying to Minikube using Kubectl
 
-In <name>-deployment.yaml, add:
+In *-deployment.yaml, add:
 
 ```yaml
   imagePullPolicy: Never
@@ -175,7 +175,7 @@ for each kubernetes.yaml file, minus service file
 
 ## Add Replica Sets
 
-In the <service-name>-deployment.yaml file, add this field to the ruleset:
+In the *-deployment.yaml file, add this field to the ruleset:
 
 ```yaml
 ...
