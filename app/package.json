@@ -1,5 +1,5 @@
 {
-  "name": "chance",
+  "name": "chance-app",
   "version": "0.0.2-dev",
   "scripts": {
     "dev": "vite",

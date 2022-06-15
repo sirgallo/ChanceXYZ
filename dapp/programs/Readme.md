@@ -1,1 +1,1 @@
-# ChanceDao Liquidity Pool and Solana Program
+# ChanceXYZ Liquidity Pool and Solana Program
