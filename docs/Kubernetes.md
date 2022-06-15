@@ -86,7 +86,7 @@ Create Kubernetes Secret
 
 Review with
 
-```
+```bash
   kubectl get secret <secret-name> -o yaml
 ```
 
