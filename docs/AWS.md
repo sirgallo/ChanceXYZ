@@ -34,3 +34,7 @@
 ## Elastic IP
 
   Elastic IP addresses are a way to assign static IP addresses to a system. Assign these to something like a load balancer, while any apis or worker systems can assume dynamic IP addresses since they are not outward facing.
+
+## Route 53
+
+  Currently using `GoDaddy` for domain names, but should transition to `Route 53`
