@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: chance-replica
+spec:
+  replicas: 3
+  selector:
+    app: chance
+  template:
+    metadata:
+      labels:
+        app: chance
+    spec:
+      containers:
+        - env:
+            - name: NODE_ENV
+              value: docker
+            - name: NODE_OPTIONS
+              value: '"--max-old-space-size=4096"'
+          image: chance-app-img
+          imagePullPolicy: Never
+          name: chance-app
+          ports:
+            - containerPort: 80
+          resources: {}
+          volumeMounts:
+            - mountPath: /usr/chance/data
+              name: chancedata
+      restartPolicy: Always
+      volumes:
+        - name: chancedata
+          persistentVolumeClaim:
+            claimName: chancedata

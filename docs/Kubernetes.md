@@ -56,19 +56,19 @@ The `NGINX` ingress controller defines rules that allow external requests to acc
   minikube addons enable ingress
 ```
 
-Get the external IP of minikube
+`Get the external IP of minikube`
 
 ```bash
   minikube ip
 ```
 
-Then modify `/etc/hosts` on your local machine with the ip and domain
+`Modify /etc/hosts on your local machine with the ip and domain`
 
 ```
   <ip-from-minikube> <domain-in-ingress-file>
 ```
 
-Create self-signed cert (local only)
+`Create self-signed cert (local only)`
 
 ```bash
   openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout <name>.key -out <name>.crt -subj "/CN=<host>/O=<host>"
@@ -76,7 +76,7 @@ Create self-signed cert (local only)
   cat <name>.key <name>.crt > <name>.pem
 ```
 
-Create Kubernetes Secret
+`Create Kubernetes Secret`
 
 `-->` The convention is to use the domain name, with dots replaced with hypens and appended with `-tls`
 
@@ -84,7 +84,7 @@ Create Kubernetes Secret
   kubectl create secret tls <secret-name> --cert=<name>.crt --key=<name>.key
 ```
 
-Review with
+`Review`
 
 ```bash
   kubectl get secret <secret-name> -o yaml
@@ -115,13 +115,13 @@ Create a `*-ingress.yaml` file, like below:
                     number: <port>
 ```
 
-Then apply the `yaml` file 
+`Apply yaml file`
 
 ```bash
   kubectl apply -f <ingress-yaml-file>
 ```
 
-Verify
+`Verify`
 
 ```bash
   kubectl get ingress
@@ -140,7 +140,7 @@ In `*-deployment.yaml`, add:
 for each kubernetes.yaml file, minus service file
 
   kubectl apply -f <name-of-service-file>
-  kubectl expose deployment <deployment-name> --type=NodePort --port=<port-of-pods-to-expose> --name=<name-of-service>
+  kubectl expose deployment <deployment-name> --type=NodePort --port=<port-of-pods-to-expose> --name=<name-of-service>   // only if replication controller is not used
 ```
 
 ## List Pods
@@ -173,7 +173,7 @@ for each kubernetes.yaml file, minus service file
   kubectl replace -f <service-deployment-yaml>
 ```
 
-## Add Replica Sets
+## Basic Replica Sets
 
 In the `*-deployment.yaml` file, add this field to the ruleset:
 
@@ -182,4 +182,58 @@ In the `*-deployment.yaml` file, add this field to the ruleset:
 rules:
   replicas: <n-number-of-replicas>
 ...
+```
+
+## Replication Controller (Recommended over replica sets)
+
+This automatically starts new containers if not enough are available, and removes containers if there are too many. Use this instead of a typical deployment to add rolling updates to pods.
+
+example replication controller for a nodejs service
+
+```yaml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: <app-name>
+spec:
+  replicas: <n-number-of-replicas>
+  selector:
+    app: <app-name>
+  template:
+    metadata:
+      labels:
+        app: <app-name>
+    spec:
+      containers:
+      - env:
+            - name: NODE_ENV
+              value: docker
+            - name: NODE_OPTIONS
+              value: '"--max-old-space-size=4096"'
+        image: <container-image>
+        imagePullPolicy: Never      //  only for local
+        name: <container-name>
+        ports:
+          - containerPort: <port>
+        resources: {}
+          volumeMounts:
+            - mountPath: <mount-path-from-docker-compose>
+              name: <volume-name>
+        restartPolicy: Always
+        volumes:
+          - name: <volume-name>
+            persistentVolumeClaim:
+              claimName: <volume-name>
+```
+
+`Apply new replication manifest`
+
+```bash
+  kubectl apply -f <replication.yaml>
+```
+
+`Expose as a service`
+
+```bash
+  kubectl expose replicationcontroller <replication-name> --type=NodePort --port=<port> --name=<service-name>
 ```

@@ -9,7 +9,6 @@ metadata:
     io.kompose.service: chance
   name: chance
 spec:
-  replicas: 3
   selector:
     matchLabels:
       io.kompose.service: chance
@@ -35,7 +34,7 @@ spec:
           imagePullPolicy: Never
           name: chance-app-inst
           ports:
-            - containerPort: 3456
+            - containerPort: 80
           resources: {}
           volumeMounts:
             - mountPath: /usr/chance/data
