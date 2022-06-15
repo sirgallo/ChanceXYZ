@@ -1,4 +1,4 @@
-# ChanceDao App
+# ChanceXYZ App
 
 This part still needs to be hosted  --> dev use docker-compose
 
