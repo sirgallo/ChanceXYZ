@@ -144,41 +144,6 @@ for each kubernetes.yaml file, minus service file
 ```
 
 
-## List Pods
-
-```bash
-  kubectl get pods -A
-```
-
-
-## Get a Service
-
-```bash
-  kubectl get services <service-name>
-```
-
-
-## Get Service URL
-
-```bash
-  minikube service <service-name> --url
-```
-
-
-## Delete a Service
-
-```bash
-  kubectl delete svc <service-name>
-```
-
-
-## Replace a Service
-
-```bash
-  kubectl replace -f <service-deployment-yaml>
-```
-
-
 ## Basic Replica Sets
 
 In the `*-deployment.yaml` file, add this field to the ruleset:
@@ -243,4 +208,39 @@ spec:
 
 ```bash
   kubectl expose replicationcontroller <replication-name> --type=NodePort --port=<port> --name=<service-name>
+```
+
+
+## List Pods
+
+```bash
+  kubectl get pods -A
+```
+
+
+## Get a Service
+
+```bash
+  kubectl get services <service-name>
+```
+
+
+## Get Service URL
+
+```bash
+  minikube service <service-name> --url
+```
+
+
+## Delete a Service
+
+```bash
+  kubectl delete svc <service-name>
+```
+
+
+## Replace a Service
+
+```bash
+  kubectl replace -f <service-deployment-yaml>
 ```
