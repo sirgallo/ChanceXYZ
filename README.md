@@ -85,7 +85,7 @@ Currently only running cash secured puts using `usdc`.
 `d` should be weighted much more heavily than `y` and `e`, with `e` having the overall lowest weight to make the system more democratic. `e` should be an order smaller than `y` since revolving pool contributors earn a small fraction of the premium generated, thus increasing their size and overall chance of winning the pot.
 
 
-##  How Premium is distributed
+##  How Premium is Distributed
 
 `20%` deposit back into LP --> this will allow the pool to grow over time and return higher rewards. Will also act as a treasury
 
@@ -101,7 +101,7 @@ Currently only running cash secured puts using `usdc`.
 A `2%` performance fee is deducted on every transaction, which is distributed amongst devs and the treasury. This is due to the fact that Chance is offering a service to users, with the opportunity to not only win the lottery, but generate a small interest on pool contributions.
 
 
-##  How pool is handled
+##  How Pool is Handled
 
 Because the premium is the lottery pot, users will be returned the full amount they deposited + interest accrued, minus performance fees, unless the pool suffers losses due to risks associated with covered puts, including the underlying asset dropping below the strike price. 
 
