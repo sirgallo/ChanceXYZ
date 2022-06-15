@@ -43,7 +43,8 @@ Frontend
 
 ##  Determine Highest Performing Volt?
 
-Currently only running cash secured puts using `usdc`
+Currently only running cash secured puts using `usdc`.
+
 `Why?` --> The underlying asset is stable 
 
 ```
